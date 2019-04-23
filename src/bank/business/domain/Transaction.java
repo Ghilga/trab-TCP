@@ -7,11 +7,14 @@ import java.util.Date;
  * 
  */
 public abstract class Transaction {
-
+	
+	private static final boolean FINALIZADA = true;
+	private static final boolean PENDENTE = false;
 	private CurrentAccount account;
 	private double amount;
 	private Date date;
 	private OperationLocation location;
+	private boolean status;
 
 	protected Transaction(OperationLocation location, CurrentAccount account,
 			double amount) {
@@ -57,6 +60,13 @@ public abstract class Transaction {
 	 */
 	public void setDate(Date date) {
 		this.date = date;
+	}
+	
+	/**
+	 * sets the status of the transaction
+	 */
+	public void setStatus(boolean status) {
+		this.status = status;
 	}
 
 }

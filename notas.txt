@@ -1,0 +1,8 @@
+//infos achadas no arquivo bank.data.Database
+	Agencias: 1 e 2
+	Contas Agencia 1(Campus do Vale): 1 (Ingrid Nunes)
+	Contas Agencia 2(Centro): 2(Joao Silva) e 3(Richer Rich)
+	Obs: TODAS as senhas são 123
+	
+
+	

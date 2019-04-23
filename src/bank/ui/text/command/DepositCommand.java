@@ -1,6 +1,7 @@
 package bank.ui.text.command;
 
 import bank.business.AccountOperationService;
+import bank.business.domain.Branch;
 import bank.business.domain.Deposit;
 import bank.ui.text.BankTextInterface;
 import bank.ui.text.UIUtils;
@@ -29,6 +30,10 @@ public class DepositCommand extends Command {
 		Deposit deposit = accountOperationService.deposit(bankInterface
 				.getOperationLocation().getNumber(), branch, accountNumber,
 				envelope, amount);
+		if (deposit.getLocation() instanceof Branch) {
+			//sistema registra estado da transacao como FINALIZADA (na interface textual)
+			System.out.println("Transacao FINALIZADA (interface de texto)");
+		}
 
 		System.out.println(getTextManager().getText(
 				"message.operation.succesfull"));
