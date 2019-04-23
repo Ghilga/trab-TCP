@@ -22,15 +22,12 @@ public class BranchInterface extends BankTextInterface {
 			AccountManagementService accountManagementService,
 			AccountOperationService accountOperationService) {
 		super(branch);
-		this.addAction("L", new EmployeeLoginCommand(this,
-				accountManagementService));
-		this.addAction("C", new CreateAccountCommand(this,
-				accountManagementService));
+		this.addAction("L", new EmployeeLoginCommand(this,accountManagementService));
+		this.addAction("C", new CreateAccountCommand(this,accountManagementService));
 		this.addAction("B", new BalanceCommand(this, accountOperationService));
 		this.addAction("S", new StatementCommand(this, accountOperationService));
 		this.addAction("D", new DepositCommand(this, accountOperationService));
-		this.addAction("W",
-				new WithdrawalCommand(this, accountOperationService));
+		this.addAction("W", new WithdrawalCommand(this, accountOperationService));
 		this.addAction("T", new TransferCommand(this, accountOperationService));
 		this.addAction("O", new LogoutCommand(this));
 	}

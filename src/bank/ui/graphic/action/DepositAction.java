@@ -107,7 +107,10 @@ public class DepositAction extends AccountAbstractAction {
 					 );
 			if (deposit.getLocation() instanceof Branch) {
 				//Sistema registra transação com estado FINALIZADA (na interface grafica)
-				System.out.println("Transacao FINALIZADA (interface grafica)");
+				System.out.println("Transacao " + deposit.getDepositStatus());
+				for (Deposit depositos : deposit.getAccount().getDeposits()) {
+					System.out.println(depositos.getAccount().getId().getNumber());
+				}
 				
 			}
 			StringBuffer sb = new StringBuffer();
