@@ -80,8 +80,9 @@ public class StatementCommand extends Command {
 		sb.append(getTextManager().getText("location")).append("\t");
 		sb.append(getTextManager().getText("operation.type")).append("\t");
 		sb.append(getTextManager().getText("details")).append("\t");
-		sb.append(getTextManager().getText("amount")).append("\n");
-		sb.append("---------------------------------------------------------------------------------\n");
+		sb.append(getTextManager().getText("amount")).append("\t");
+		sb.append(getTextManager().getText("status")).append("\n");
+		sb.append("--------------------------------------------------------------------------------------------------------\n");
 		for (Transaction transaction : transactions) {
 			sb.append(UIUtils.INSTANCE.formatDateTime(transaction.getDate()))
 					.append("\t");
@@ -95,7 +96,8 @@ public class StatementCommand extends Command {
 					.append("\t\t");
 			if (transaction instanceof Deposit) {
 				sb.append(((Deposit) transaction).getEnvelope()).append("\t\t");
-				sb.append("+ ").append(transaction.getAmount());
+				sb.append("+ ").append(transaction.getAmount()).append("\t");
+				sb.append(((Deposit) transaction).getDepositStatus());
 			} else if (transaction instanceof Transfer) {
 				Transfer transfer = (Transfer) transaction;
 				if (transfer.getAccount().getId().equals(caId)) {

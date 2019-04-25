@@ -23,11 +23,9 @@ import javax.swing.KeyStroke;
 
 import bank.business.AccountOperationService;
 import bank.business.BusinessException;
-import bank.business.domain.Branch;
 import bank.business.domain.Deposit;
 import bank.ui.TextManager;
 import bank.ui.graphic.BankGraphicInterface;
-import bank.ui.graphic.BranchGUIInterface;
 import bank.ui.graphic.GUIUtils;
 
 /**
@@ -102,17 +100,9 @@ public class DepositAction extends AccountAbstractAction {
 					((Number) branch.getValue()).longValue(), 
 					((Number) accountNumber.getValue()).longValue(), 
 					((Number) envelope.getValue()).intValue(), 
-					((Number) amount.getValue()).doubleValue()
-					
+					((Number) amount.getValue()).doubleValue()				
 					 );
-			if (deposit.getLocation() instanceof Branch) {
-				//Sistema registra transação com estado FINALIZADA (na interface grafica)
-				System.out.println("Transacao " + deposit.getDepositStatus());
-				for (Deposit depositos : deposit.getAccount().getDeposits()) {
-					System.out.println(depositos.getAccount().getId().getNumber());
-				}
-				
-			}
+			
 			StringBuffer sb = new StringBuffer();
 			sb.append(textManager.getText("message.operation.succesfull"))
 					.append("\n");

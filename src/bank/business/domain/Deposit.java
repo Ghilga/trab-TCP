@@ -18,7 +18,7 @@ public class Deposit extends Transaction {
 		if(location instanceof Branch) {
 			this.depositStatus = FINALIZADA;
 		} 
-		else if(amount > 100){
+		else if(location instanceof ATM){
 			this.depositStatus = PENDENTE;
 		}
 		

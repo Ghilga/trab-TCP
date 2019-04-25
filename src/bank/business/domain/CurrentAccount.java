@@ -36,7 +36,12 @@ public class CurrentAccount implements Credentials {
 
 	public Deposit deposit(OperationLocation location, long envelope,
 			double amount) throws BusinessException {
-		depositAmount(amount);
+		
+		//System.out.println("Antes: " + this.balance);
+		if(location instanceof Branch || amount <= 100) {
+			depositAmount(amount);
+		}
+		//System.out.println("Depois: " + this.balance);
 
 		Deposit deposit = new Deposit(location, this, envelope, amount);
 		this.deposits.add(deposit);
@@ -48,7 +53,7 @@ public class CurrentAccount implements Credentials {
 		if (!isValidAmount(amount)) {
 			throw new BusinessException("exception.invalid.amount");
 		}
-
+		
 		this.balance += amount;
 	}
 
