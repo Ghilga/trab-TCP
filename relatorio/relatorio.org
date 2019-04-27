@@ -1,0 +1,34 @@
+
+#+TITLE: Trabalho prático pt.I
+#+SUBTITLE: Técnics de Construção de Programas
+#+AUTHOR: Fernando Corrêa Gomes, Leonardo, Alan, Maria
+#+LANGUAGE: pt
+#+LATEX_CLASS: iiufrgs
+#+LATEX_CLASS_OPTIONS: [cic]
+#+LATEX_HEADER: \input{iiufrgs-org.tex}
+#+LATEX_HEADER: \usepackage{palatino}
+#+TAGS: noexport(n) deprecated(d) success(s) failed(f) pending(p)
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+SEQ_TODO: TODO(t!) STARTED(s!) WAITING(w!) REVIEW(r!) PENDING(p!) | DONE(d!) CANCELLED(c!) DEFERRED(f!)
+#+STARTUP: overview indent
+#+OPTIONS: ^:nil _:nil
+#+OPTIONS: ':nil toc:nil
+
+* Configuration                                                    :noexport:
+#+begin_src elisp
+(setq org-latex-classes
+      '(("iiufrgs"
+          "\\documentclass{iiufrgs}\n\\usepackage[alf,abnt-emphasize=bf]{abntex2cite}\n[DEFAULT-PACKAGES]\n[PACKAGES]\n[EXTRA]\n"
+          ("\\chapter{%s}" . "\\chapter*{%s}")
+          ("\\section{%s}" . "\\section*{%s}")
+          ("\\subsection{%s}" . "\\subsection*{%s}")
+          ("\\subsubsection{%s}" . "\\subsubsection*{%s}"))))
+
+(setq org-latex-prefer-user-labels t)
+#+end_src
+
+* Diagramas de classe
+* Diagramas de sequência
+* Descrição do trabalho
+blablablabla
