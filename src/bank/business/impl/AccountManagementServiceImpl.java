@@ -3,13 +3,17 @@
  */
 package bank.business.impl;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 import bank.business.AccountManagementService;
 import bank.business.BusinessException;
 import bank.business.domain.Branch;
 import bank.business.domain.Client;
 import bank.business.domain.CurrentAccount;
+import bank.business.domain.Deposit;
 import bank.business.domain.Employee;
 import bank.business.domain.OperationLocation;
 import bank.data.Database;
@@ -63,6 +67,18 @@ public class AccountManagementServiceImpl implements AccountManagementService {
 		}
 
 		return employee;
+	}
+	
+	@Override
+	public List<Deposit> getAllAccountsDeposits() throws BusinessException {
+		Collection<CurrentAccount> currentAccounts = this.database.getAllCurrentAccounts();
+		List<Deposit> allDeposits = new ArrayList<Deposit>();
+		for (CurrentAccount account : currentAccounts.toArray(new CurrentAccount[0])) {
+			for(Deposit accountDeposits : account.getDeposits()) {
+				allDeposits.add(accountDeposits);
+			}
+		}
+		return allDeposits;
 	}
 
 }

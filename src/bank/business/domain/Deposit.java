@@ -8,6 +8,7 @@ public class Deposit extends Transaction {
 
 	public static final String PENDENTE = "Pendente";
 	public static final String FINALIZADA = "Finalizada";
+	public static final String CANCELADA = "Cancelada";
 	private long envelope;
 	private String depositStatus;
 
@@ -30,8 +31,23 @@ public class Deposit extends Transaction {
 	public long getEnvelope() {
 		return envelope;
 	}
-	
+	/**
+	 * 
+	 * @param status
+	 * 			sets the deposit status
+	 */
+	public void setDepositStatus(String depositStatus) {
+		this.depositStatus = depositStatus;
+	}
+	/**
+	 * 
+	 * @return deposit status
+	 */
 	public String getDepositStatus() {
 		return depositStatus;
+	}
+	
+	public void confirmDeposit() {
+		
 	}
 }

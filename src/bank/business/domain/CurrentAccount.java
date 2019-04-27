@@ -48,6 +48,12 @@ public class CurrentAccount implements Credentials {
 
 		return deposit;
 	}
+	public void depositConfirmed(double amount) throws BusinessException {
+		depositAmount(amount);
+	}
+	public void depositDenied(double amount) throws BusinessException {
+		this.balance -= amount;
+	}
 
 	private void depositAmount(double amount) throws BusinessException {
 		if (!isValidAmount(amount)) {

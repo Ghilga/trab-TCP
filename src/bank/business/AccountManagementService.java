@@ -4,8 +4,10 @@
 package bank.business;
 
 import java.util.Date;
+import java.util.List;
 
 import bank.business.domain.CurrentAccount;
+import bank.business.domain.Deposit;
 import bank.business.domain.Employee;
 
 /**
@@ -20,5 +22,7 @@ public interface AccountManagementService {
 
 	public Employee login(String username, String password)
 			throws BusinessException;
-
+	
+	public List<Deposit> getAllAccountsDeposits()
+			throws BusinessException;
 }

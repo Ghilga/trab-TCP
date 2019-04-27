@@ -19,13 +19,11 @@ public class ATMInterface extends BankTextInterface {
 
 	public ATMInterface(ATM atm, AccountOperationService accountOperationService) {
 		super(atm);
-		this.addAction("L", new ClientLoginCommand(this,
-				accountOperationService));
+		this.addAction("L", new ClientLoginCommand(this,accountOperationService));
 		this.addAction("B", new BalanceCommand(this, accountOperationService));
 		this.addAction("S", new StatementCommand(this, accountOperationService));
 		this.addAction("D", new DepositCommand(this, accountOperationService));
-		this.addAction("W",
-				new WithdrawalCommand(this, accountOperationService));
+		this.addAction("W", new WithdrawalCommand(this, accountOperationService));
 		this.addAction("T", new TransferCommand(this, accountOperationService));
 		this.addAction("O", new LogoutCommand(this));
 	}
