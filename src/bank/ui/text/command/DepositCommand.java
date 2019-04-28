@@ -1,7 +1,6 @@
 package bank.ui.text.command;
 
 import bank.business.AccountOperationService;
-import bank.business.domain.Branch;
 import bank.business.domain.Deposit;
 import bank.ui.text.BankTextInterface;
 import bank.ui.text.UIUtils;
@@ -30,15 +29,26 @@ public class DepositCommand extends Command {
 		Deposit deposit = accountOperationService.deposit(bankInterface
 				.getOperationLocation().getNumber(), branch, accountNumber,
 				envelope, amount);
-		if (deposit.getLocation() instanceof Branch) {
-			//sistema registra estado da transacao como FINALIZADA (na interface textual)
-			System.out.println("Transacao FINALIZADA (interface de texto)");
-		}
+		
 
+		
 		System.out.println(getTextManager().getText(
-				"message.operation.succesfull"));
+					"message.operation.succesfull"));
 		System.out.println(getTextManager().getText("deposit") + ": "
 				+ deposit.getAmount());
+		
+		if(deposit.getDepositStatus() == Deposit.PENDENTE && amount > 100)
+			System.out.println(
+					"Status da operacao: PENDENTE\nAguardando confirmacao da agencia para depositar a quantia requisitada");
+		
+		if(deposit.getDepositStatus() == Deposit.PENDENTE && amount <= 100)
+			System.out.println(
+					"Status da operacao: PENDENTE\nQuantia disponivel para uso");
+		
+		else if (deposit.getDepositStatus() == Deposit.FINALIZADA ) {
+			//sistema registra estado da transacao como FINALIZADA (na interface textual) deposit.getLocation() instanceof Branch ||
+			System.out.println("Status da operacao: FINALIZADA");
+		}
 	}
 
 }
