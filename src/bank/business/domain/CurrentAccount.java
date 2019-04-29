@@ -37,11 +37,10 @@ public class CurrentAccount implements Credentials {
 	public Deposit deposit(OperationLocation location, long envelope,
 			double amount) throws BusinessException {
 		
-		//System.out.println("Antes: " + this.balance);
 		if(location instanceof Branch || amount <= 100) {
+			//se for depositado na agencia ou o valor é menor ou igual a 100 o deposito é creditado no saldo
 			depositAmount(amount);
 		}
-		//System.out.println("Depois: " + this.balance);
 
 		Deposit deposit = new Deposit(location, this, envelope, amount);
 		this.deposits.add(deposit);

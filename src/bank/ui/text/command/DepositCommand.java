@@ -46,7 +46,7 @@ public class DepositCommand extends Command {
 					"Status da operacao: PENDENTE\nQuantia disponivel para uso");
 		
 		else if (deposit.getDepositStatus() == Deposit.FINALIZADA ) {
-			//sistema registra estado da transacao como FINALIZADA (na interface textual) deposit.getLocation() instanceof Branch ||
+			//sistema registra estado da transacao como FINALIZADA (na interface textual)
 			System.out.println("Status da operacao: FINALIZADA");
 		}
 	}
