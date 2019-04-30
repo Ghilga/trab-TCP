@@ -47,7 +47,4 @@ public class Deposit extends Transaction {
 		return depositStatus;
 	}
 	
-	public void confirmDeposit() {
-		
-	}
 }

@@ -13,8 +13,8 @@ import bank.ui.text.UIUtils;
 
 public class ConfirmDepositCommand extends Command{
 	private final AccountManagementService accountManagementService;
-	Map<Integer,Deposit> pendingDeposits;
-	Map<String,String> allowDepositCommands;
+	private Map<Integer,Deposit> pendingDeposits;
+	private Map<String,String> allowDepositCommands;
 
 	public ConfirmDepositCommand(BankTextInterface bankInterface,
 									AccountManagementService accountManagementService) {
@@ -54,51 +54,14 @@ public class ConfirmDepositCommand extends Command{
 			}
 		} while (!allowDepositCommands.containsValue(finalStatus));
 		
-		if(finalStatus == "Sair") {
-			return;
-		}
+		setFinalStatus(selectedDeposit,finalStatus);
 		
-		else if(finalStatus == Deposit.CANCELADA) {
-			if(selectedDeposit.getAmount() > 100) {
-				selectedDeposit.setDepositStatus(finalStatus); //finalStatus = CANCELADA
-			} 
-			else {	//amount <= 100
-				selectedDeposit.setDepositStatus(finalStatus); //finalStatus = CANCELADA
-				selectedDeposit.getAccount().depositDenied(selectedDeposit.getAmount());
-			}
-		} 
-		else if(finalStatus == Deposit.FINALIZADA) {
-			if(selectedDeposit.getAmount() > 100) {
-				selectedDeposit.getAccount().depositConfirmed(selectedDeposit.getAmount());
-				selectedDeposit.setDepositStatus(finalStatus); //finalStatus = FINALIZADA
-			} 
-			else {	//amount <= 100
-		 		selectedDeposit.setDepositStatus(finalStatus); //finalStatus = FINALIZADA
-		 	}
-		}
 		
 	}
 	
-	private void printDeposits(List<Deposit> allDeposits) {
-		System.out.println("\nN \tConta \tValor \t\t\tEstado");
-		for (int i=0; i < allDeposits.size(); i++) {
-			System.out.println(
-				i+1 + " - " + "\t" +
-				allDeposits.get(i).getAccount().getId().getNumber() + "\t" + 
-				allDeposits.get(i).getAmount() + "\t" + 
-				allDeposits.get(i).getDepositStatus()
-				);			
-		}
-	}
-	
-	private void printOption() {
-		System.out.println("\nOpções (ou E para sair)");
-		System.out.println("A - Autorizar deposito");
-		System.out.println("C - Cancelar deposito");
-		System.out.println("Escolha uma opção: ");
-	}
-	
-	private List<Deposit> getPendingDeposits(){
+	private List<Deposit> getPendingDeposits() 
+			throws BusinessException{
+		
 		pendingDeposits = new HashMap<>();
 		List<Deposit> pendingDepositsList = new ArrayList<>();
 		List<Deposit> allDeposits = null;
@@ -118,6 +81,57 @@ public class ConfirmDepositCommand extends Command{
 		}
 		
 		return pendingDepositsList;
+	}
+	
+	private void setFinalStatus(Deposit selectedDeposit, String finalStatus) {
+		if(finalStatus == "Sair") {
+			return;
+		}
+		else if(finalStatus == Deposit.CANCELADA) {
+			if(selectedDeposit.getAmount() > 100) {
+				selectedDeposit.setDepositStatus(finalStatus); //finalStatus = CANCELADA
+			} 
+			else {	//amount <= 100
+				selectedDeposit.setDepositStatus(finalStatus); //finalStatus = CANCELADA
+				try {
+					selectedDeposit.getAccount().depositDenied(selectedDeposit.getAmount());
+				} catch (BusinessException e) {
+					e.printStackTrace();
+				}
+			}
+		} 
+		else if(finalStatus == Deposit.FINALIZADA) {
+			if(selectedDeposit.getAmount() > 100) {
+				try {
+					selectedDeposit.getAccount().depositConfirmed(selectedDeposit.getAmount());
+				} catch (BusinessException e) {
+					e.printStackTrace();
+				}
+				selectedDeposit.setDepositStatus(finalStatus); //finalStatus = FINALIZADA
+			} 
+			else {	//amount <= 100
+		 		selectedDeposit.setDepositStatus(finalStatus); //finalStatus = FINALIZADA
+		 	}
+		}
+	}
+	
+	private void printDeposits(List<Deposit> allDeposits) {
+		System.out.println("\nN \tConta \tValor \t\t\tEstado");
+		for (int i=0; i < allDeposits.size(); i++) {
+			System.out.println(
+				i+1 + " - " + "\t" +
+				allDeposits.get(i).getAccount().getId().getNumber() + "\t" + 
+				allDeposits.get(i).getAmount() + "\t" + 
+				allDeposits.get(i).getDepositStatus()
+				);			
+		}
+	}
+	
+	private void printOption() {
+		System.out.println("\nOpções (ou E para sair)");
+		System.out.println("A - Autorizar deposito");
+		System.out.println("C - Cancelar deposito");
+		System.out.println("Escolha uma opção: ");
 	}
 	
 }

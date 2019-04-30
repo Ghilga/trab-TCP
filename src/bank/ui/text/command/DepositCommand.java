@@ -30,12 +30,17 @@ public class DepositCommand extends Command {
 				.getOperationLocation().getNumber(), branch, accountNumber,
 				envelope, amount);
 		
-
-		
 		System.out.println(getTextManager().getText(
 					"message.operation.succesfull"));
 		System.out.println(getTextManager().getText("deposit") + ": "
 				+ deposit.getAmount());
+
+		setStatus(deposit,amount);
+
+	
+	}
+	
+	private void setStatus(Deposit deposit, Double amount) {
 		
 		if(deposit.getDepositStatus() == Deposit.PENDENTE && amount > 100)
 			System.out.println(
@@ -49,6 +54,9 @@ public class DepositCommand extends Command {
 			//sistema registra estado da transacao como FINALIZADA (na interface textual)
 			System.out.println("Status da operacao: FINALIZADA");
 		}
+		
 	}
-
+	
+	
+	
 }
