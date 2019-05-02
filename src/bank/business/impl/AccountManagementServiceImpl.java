@@ -6,7 +6,9 @@ package bank.business.impl;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import bank.business.AccountManagementService;
 import bank.business.BusinessException;
@@ -80,5 +82,48 @@ public class AccountManagementServiceImpl implements AccountManagementService {
 		}
 		return allDeposits;
 	}	
+	
+	public List<Deposit> getPendingDepositsList() {
+		
+		List<Deposit> pendingDepositsList = new ArrayList<>();
+		List<Deposit> allDeposits = null;
+		
+		try {
+			allDeposits = this.getAllAccountsDeposits();
+		} catch (BusinessException e) {
+			e.printStackTrace();
+		}
+		
+		for (int i=0; i < allDeposits.size(); i++) {
+			if(allDeposits.get(i).getDepositStatus() == Deposit.PENDENTE) {
+				pendingDepositsList.add(allDeposits.get(i));
+			}
+		}
+		
+		return pendingDepositsList;
+	}
 
+	public HashMap<Integer, Deposit> getPendingDepositsMap() {
+		
+		HashMap<Integer,Deposit> pendingDeposits;
+		
+		pendingDeposits = new HashMap<>();
+		List<Deposit> allDeposits = null;
+		
+		try {
+			allDeposits = this.getAllAccountsDeposits();
+		} catch (BusinessException e) {
+			e.printStackTrace();
+		}
+		
+		int key = 1;
+		for (Deposit deposit : allDeposits) {
+			if(deposit.getDepositStatus() == Deposit.PENDENTE) {
+				pendingDeposits.put(key++, deposit);
+			}
+		}
+		
+		return pendingDeposits;
+	}
+	
 }

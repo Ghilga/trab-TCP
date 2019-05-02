@@ -4,6 +4,7 @@
 package bank.business;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import bank.business.domain.CurrentAccount;
@@ -25,4 +26,10 @@ public interface AccountManagementService {
 	
 	public List<Deposit> getAllAccountsDeposits()
 			throws BusinessException;
+	
+	public List<Deposit> getPendingDepositsList();
+			
+	
+	public HashMap<Integer, Deposit> getPendingDepositsMap();
+			
 }

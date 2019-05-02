@@ -96,7 +96,7 @@ public class StatementCommand extends Command {
 					.append("\t\t");
 			if (transaction instanceof Deposit) {
 				sb.append(((Deposit) transaction).getEnvelope()).append("\t\t");
-				sb.append("+ ").append(transaction.getAmount()).append("\t");
+				sb.append("+ ").append(String.format("%.14f", transaction.getAmount())).append("\t");
 				sb.append(((Deposit) transaction).getDepositStatus());
 			} else if (transaction instanceof Transfer) {
 				Transfer transfer = (Transfer) transaction;

@@ -8,6 +8,7 @@ import java.util.Map;
 import bank.business.AccountManagementService;
 import bank.business.BusinessException;
 import bank.business.domain.Deposit;
+import bank.business.impl.AccountManagementServiceImpl;
 import bank.ui.text.BankTextInterface;
 import bank.ui.text.UIUtils;
 
@@ -20,6 +21,7 @@ public class ConfirmDepositCommand extends Command{
 									AccountManagementService accountManagementService) {
 		super(bankInterface);
 		this.accountManagementService = accountManagementService;
+		this.pendingDeposits = new HashMap<>();
 		allowDepositCommands = new HashMap<>();
 		allowDepositCommands.put("A",Deposit.FINALIZADA);
 		allowDepositCommands.put("C",Deposit.CANCELADA);
@@ -28,7 +30,8 @@ public class ConfirmDepositCommand extends Command{
 
 	@Override
 	public void execute() throws Exception {
-		List<Deposit> pendingDepositsList = getPendingDeposits();
+		List<Deposit> pendingDepositsList = accountManagementService.getPendingDepositsList();
+		this.pendingDeposits = accountManagementService.getPendingDepositsMap();
 		if(pendingDepositsList.isEmpty()) {
 			System.out.println("Não há depósitos pendentes");
 			return;
@@ -59,31 +62,7 @@ public class ConfirmDepositCommand extends Command{
 		
 	}
 	
-	private List<Deposit> getPendingDeposits() 
-			throws BusinessException{
-		
-		pendingDeposits = new HashMap<>();
-		List<Deposit> pendingDepositsList = new ArrayList<>();
-		List<Deposit> allDeposits = null;
-		
-		try {
-			allDeposits = accountManagementService.getAllAccountsDeposits();
-		} catch (BusinessException e) {
-			e.printStackTrace();
-		}
-		
-		int key = 1;
-		for (int i=0; i < allDeposits.size(); i++) {
-			if(allDeposits.get(i).getDepositStatus() == Deposit.PENDENTE) {
-				pendingDeposits.put(key++, allDeposits.get(i));
-				pendingDepositsList.add(allDeposits.get(i));
-			}
-		}
-		
-		return pendingDepositsList;
-	}
-	
-	private void setFinalStatus(Deposit selectedDeposit, String finalStatus) {
+	public void setFinalStatus(Deposit selectedDeposit, String finalStatus) {
 		if(finalStatus == "Sair") {
 			return;
 		}
@@ -115,7 +94,7 @@ public class ConfirmDepositCommand extends Command{
 		}
 	}
 	
-	private void printDeposits(List<Deposit> allDeposits) {
+	public void printDeposits(List<Deposit> allDeposits) {
 		System.out.println("\nN \tConta \tValor \t\t\tEstado");
 		for (int i=0; i < allDeposits.size(); i++) {
 			System.out.println(
@@ -127,7 +106,7 @@ public class ConfirmDepositCommand extends Command{
 		}
 	}
 	
-	private void printOption() {
+	public void printOption() {
 		System.out.println("\nOpções (ou E para sair)");
 		System.out.println("A - Autorizar deposito");
 		System.out.println("C - Cancelar deposito");
