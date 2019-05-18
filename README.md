@@ -3,7 +3,8 @@ Trabalho da disciplina Técnicas de construção de programas - UFRGS
 
 TODO:
 ```
-- iniciar etapa 2
+- Definir relações da classe BancoDeDados com as classes de Dados
+- Criar uma classe de Atribuição de Avaliações e Notas
 ```
 ## Participantes 
 Leonardo de Souza Augusto - Graduando de Engenharia da Computação - UFRGS	  
