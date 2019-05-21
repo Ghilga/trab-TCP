@@ -1,9 +1,9 @@
-evaluationAction
+evaluationCommand
 
-no momento em que o construtor da evaluationAction ele 
+no momento em que o execute da evaluationCommand ele 
 	lista todos os produtos da classe DataBase e 
-	solicita do usuário o produto a ser avaliado então 
-	lista todos os avaliadores do grupo deste produto
+	solicita do usuário o produto a ser avaliado e armazena em uma variável então 
+	lista todos os avaliadores do grupo deste produto usando o gerenciador de database
 	solicita do usuário o avaliador que dará a nota para este produto então
 	solicita um número de -3 a 3 ao usuário e então
 	armazena a nota no banco de dados na forma do objeto Grade
