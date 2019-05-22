@@ -1,0 +1,14 @@
+Atribuição de notas a Produtos
+
+1.	
+	a.	usuario solicita atribuir nota a um produto
+	b.	sistema exibe a lista de produtos (com nota ou não?)
+2.	
+	a.	usuario seleciona um produto
+	b.	sistema exibe a lista de avaliadores (do produto)	
+3.	usuario seleciona um avaliador (que atribuirá a nota)
+4.	
+	a.	sistema solicita uma nota entre -3 e 3
+	b.	usuario informa a nota
+5.	sistema armazena a nota informada, relacionando ela com o avaliador e com o produto 
+	(salvar na classe Grade a nota,produto e avaliador (tabela de "Atribuição de Avaliação e Notas"))
