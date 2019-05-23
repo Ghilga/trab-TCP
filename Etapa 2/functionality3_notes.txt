@@ -1,0 +1,6 @@
+1.	usuario solicita relatorio de produtos com qualidade aceitavel
+2. 	sistema solicita a seleção de um grupo de avaliação
+3.	se nao há alocações para o grupo ou se ainda ha produtos sem nota o sistema emite alerta
+4.	caso contrario o sistema calcula a média das notas e exibe o produto em duas listas
+	a.	artigos que tem nota =>0 sao a lista de produtos aceitaveis (em ordem decrescente de nota)
+	b.	artigos com nota <= sao a lista de produtos nao aceitaveis (em ordem crescente de nota)
