@@ -1,7 +1,4 @@
-import domain.EvaluationGroup;
-import domain.User;
-import domain.Product;
-
+package domain;
 public class Evaluation {
 
 	private int score;

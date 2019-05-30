@@ -12,6 +12,16 @@ public class Database {
 	private static List<Product> products;
 
 	private static List<EvaluationGroup> evalGroups;
+	
+	private static List<ProductCategory> categories;
+	
+	
+
+	public Database() {
+		super();
+		this.categories.add(new ProductCategory("bolo"));
+		this.users.add(new User(1,"Adão", "Paraiso", Database.categories.get(0)));
+	}
 
 	public static List<ProductCategory> getGrades() {
 		return null;

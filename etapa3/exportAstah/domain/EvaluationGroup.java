@@ -1,7 +1,7 @@
 package domain;
 
-import java.util.Map;
 import java.util.List;
+import java.util.Map;
 
 public class EvaluationGroup {
 
@@ -13,14 +13,27 @@ public class EvaluationGroup {
 
 	private Evaluation evaluation;
 
-	private Evaluation[] group;
+	private List<Evaluation> group;
 
-	private User[] member;
+	private List<User> member;
 
-	private Product[] products;
+	private List<Product> products;
+
+	
+	
+	public EvaluationGroup(String name, List<User> member, List<Product> products) {
+		super();
+		this.name = name;
+		this.evalCommittee = null;
+		this.gradeAssignment = null;
+		this.evaluation = null;
+		this.group = null;
+		this.member = member;
+		this.products = products;
+	}
 
 	private void addEvaluation(Product product, User reviwer) {
-
+		
 	}
 
 	public void allocate(int numMembers) {

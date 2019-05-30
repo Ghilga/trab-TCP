@@ -8,4 +8,12 @@ public class ProductCategory {
 
 	private Product product;
 
+	public ProductCategory(String name) {
+		super();
+		this.name = name;
+		this.evaluator = null;
+		this.product = null;
+	}
+	
+
 }
