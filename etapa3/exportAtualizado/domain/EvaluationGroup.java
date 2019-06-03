@@ -9,14 +9,26 @@ public class EvaluationGroup {
 
 	private Map<Product,List<Evaluation>> evalCommittee;
 
+
 	private Evaluation evaluation;
 
-	private Evaluation[] group;
+	private List<Evaluation> group;
 
-	private User[] member;
+	private List<User> member;
 
-	private Product[] products;
+	private List<Product> products;
 
+	
+	
+	public EvaluationGroup(String name, List<User> member) {
+		super();
+		this.name = name;
+		this.evalCommittee = null;
+		this.evaluation = null;
+		this.group = null;
+		this.member = member;
+		this.products = null;
+	}
 	private void addEvaluation(Product product, User reviwer) {
 
 	}

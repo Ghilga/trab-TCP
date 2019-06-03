@@ -1,8 +1,11 @@
+package ui;
+
+
 package interface;
 
 import java.util.List;
-import java.util.Map;
-import domain.User;
+import java.util.
+import domain.User;Map;
 
 public abstract class UICommand {
 
