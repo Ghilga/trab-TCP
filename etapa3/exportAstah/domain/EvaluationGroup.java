@@ -21,7 +21,7 @@ public class EvaluationGroup {
 
 	
 	
-	public EvaluationGroup(String name, List<User> member, List<Product> products) {
+	public EvaluationGroup(String name, List<User> member) {
 		super();
 		this.name = name;
 		this.evalCommittee = null;
@@ -29,7 +29,7 @@ public class EvaluationGroup {
 		this.evaluation = null;
 		this.group = null;
 		this.member = member;
-		this.products = products;
+		this.products = null;
 	}
 
 	private void addEvaluation(Product product, User reviwer) {

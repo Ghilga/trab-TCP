@@ -20,12 +20,12 @@ public class User {
 	private List<ProductCategory> categories;
 
 	//inicialização para testes
-	public User(int id, String name, String state, ProductCategory category) {
+	public User(int id, String name, String state, List<ProductCategory> categoryList) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.state = state;
-		this.categories.add(category);
+		this.categories = categoryList;
 		this.evaluations = null;
 		this.groups = null;
 		
