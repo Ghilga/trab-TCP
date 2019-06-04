@@ -1,3 +1,4 @@
+package UI;
 /*
  * Top-level class
  * Drives the application

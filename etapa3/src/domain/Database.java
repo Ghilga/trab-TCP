@@ -3,6 +3,8 @@ package domain;
 import java.util.Arrays;
 import java.util.List;
 
+import domain.*;
+
 public class Database {
 
 	private static List<Evaluation> productsGrades;
@@ -19,7 +21,7 @@ public class Database {
 		Database.categories.add(new ProductCategory("Foundation+SPF")); //4
 		Database.categories.add(new ProductCategory("Oil Free Matte SPF")); //5
 		
-		Database.users.add(new User(1,"João", "RS", Arrays.asList(Database.categories.get(3), Database.categories.get(1), Database.categories.get(0))));
+		Database.users.add(new User(1,"João", "RS", Arrays.asList(Database.categories.get(3), Database.categories.get(1), Database.categories.get(0)), Arrays.asList(Database.evalGroups.get(0))));
 		Database.users.add(new User(2,"Ana", "SP", Arrays.asList(Database.categories.get(4), Database.categories.get(0), Database.categories.get(1))));
 		Database.users.add(new User(3,"Manoela", "RS", Arrays.asList(Database.categories.get(3), Database.categories.get(5))));
 		Database.users.add(new User(4,"Joana", "CE", Arrays.asList(Database.categories.get(3), Database.categories.get(1), Database.categories.get(4), Database.categories.get(2))));

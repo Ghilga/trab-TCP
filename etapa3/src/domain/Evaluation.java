@@ -1,33 +1,35 @@
 package domain;
 
 public class Evaluation {
-	
-	private int score = 0;
-	private boolean done;
-	
-	public boolean isDone()
-	{
-		return done;
+
+	private Integer score;
+	private EvaluationGroup group;
+	private User reviwer;
+	private Product product;
+
+	Evaluation(Integer score, EvaluationGroup group, Product product, User reviwer) {
+		this.score = score;
+		this.group = group;
+		this.product = product;
+		this.reviwer = reviwer;
 	}
 	
-	public void setScore(int sc)
-	{
-		score = sc;
-		done = true;
+	Evaluation(EvaluationGroup group, Product product, User reviwer) {
+		this.score = null;
+		this.group = group;
+		this.product = product;
+		this.reviwer = reviwer;
+	}
+	public boolean isDone() {
+		return score != null;
 	}
 
-	public int getScore()
-	{
+	public void setScore(int score) {
+		this.score = score;
+	}
+	
+	public Integer getScore() {
 		return score;
 	}
-	
-	public Evaluation()
-	{
-		
-	}
-	
-	public Evaluation(EvaluationGroup group, Product product, User reviewer)
-	{
-		
-	}
+
 }
