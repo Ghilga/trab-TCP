@@ -3,20 +3,21 @@ package domain;
 public class ProductCategory {
 	
 	private String name;
-	
-	public ProductCategory(String str)
-	{
-		name = str;
+	private User evaluator;
+	private Product product;
+
+	public ProductCategory(String name) {
+		super();
+		this.name = name;
+		this.evaluator = null;
+		this.product = null;
 	}
 	
-	public void setName(String str)
-	{
-		name = str;
+	public void setName(String name) {
+		this.name = name;
 	}
 	
-	public String getName()
-	{
+	public String getName() {
 		return name;
 	}
-	
 }

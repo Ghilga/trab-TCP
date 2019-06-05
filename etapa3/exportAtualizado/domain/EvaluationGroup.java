@@ -6,16 +6,10 @@ import java.util.List;
 public class EvaluationGroup {
 
 	private String name;
-
 	private Map<Product,List<Evaluation>> evalCommittee;
-
-
 	private Evaluation evaluation;
-
 	private List<Evaluation> group;
-
 	private List<User> member;
-
 	private List<Product> products;
 
 	

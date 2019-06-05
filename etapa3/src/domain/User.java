@@ -9,7 +9,6 @@ public class User {
 	private String name;
 	private String state;
 	private Map<EvaluationGroup,List<Evaluation>> evaluations;
-	private List<Product> assignedProducts;
 	private List<EvaluationGroup> evalGroups;
 	private List<ProductCategory> categories;
 	
