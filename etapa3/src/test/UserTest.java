@@ -16,10 +16,6 @@ import domain.User;
 public class UserTest {
 	
 	User testUser;
-	EvaluationGroup evalGroup;
-	Product product;
-	User reviewer;
-	Evaluation eval;
 	
 	@Before
 	public void setUp() throws Exception {
@@ -30,25 +26,16 @@ public class UserTest {
 		List<ProductCategory> categories = null;
 		testUser = new User(id,name,state,categories,groups);
 
-		evalGroup = Database.getEvalGroup(1);
-		product = Database.getProduct(1);
-		reviewer = Database.getUser(1);
-		eval = new Evaluation(evalGroup, product, reviewer);
-		
-
 		
 	}
-	
-	@Test
-	public void testCanEvaluate(){
-		assertTrue(testUser.canEvaluate());
-	}
-	
+		
 	@Test
 	public void testAddEvaluation(){
-		Evaluation evaluation = eval;
-		testUser.addEvaluation(evaluation);
-		assertTrue(testUser.hasEvaluation(evaluation));
+		EvaluationGroup evalGroup = Database.getEvalGroup(1);
+		Product product = Database.getProduct(1);
+		Evaluation eval = new Evaluation(evalGroup, product, testUser);
+		testUser.addEvaluation(eval);
+		assertTrue(testUser.hasEvaluation(eval));
 	}
 	
 }
