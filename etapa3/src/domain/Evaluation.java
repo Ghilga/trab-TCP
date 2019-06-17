@@ -4,21 +4,21 @@ public class Evaluation {
 
 	private Integer score;
 	private EvaluationGroup group;
-	private User reviwer;
+	private User reviewer;
 	private Product product;
 
-	public Evaluation(Integer score, EvaluationGroup group, Product product, User reviwer) {
+	public Evaluation(Integer score, EvaluationGroup group, Product product, User reviewer) {
 		this.score = score;
 		this.group = group;
 		this.product = product;
-		this.reviwer = reviwer;
+		this.reviewer = reviewer;
 	}
 	
-	public Evaluation(EvaluationGroup group, Product product, User reviwer) {
+	public Evaluation(EvaluationGroup group, Product product, User reviewer) {
 		this.score = null;
 		this.group = group;
 		this.product = product;
-		this.reviwer = reviwer;
+		this.reviewer = reviewer;
 	}
 	public boolean isDone() {
 		return score != null;
