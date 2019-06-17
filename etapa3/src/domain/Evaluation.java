@@ -7,14 +7,14 @@ public class Evaluation {
 	private User reviwer;
 	private Product product;
 
-	Evaluation(Integer score, EvaluationGroup group, Product product, User reviwer) {
+	public Evaluation(Integer score, EvaluationGroup group, Product product, User reviwer) {
 		this.score = score;
 		this.group = group;
 		this.product = product;
 		this.reviwer = reviwer;
 	}
 	
-	Evaluation(EvaluationGroup group, Product product, User reviwer) {
+	public Evaluation(EvaluationGroup group, Product product, User reviwer) {
 		this.score = null;
 		this.group = group;
 		this.product = product;

@@ -1,6 +1,9 @@
-package domain;
+package test;
 
 import org.junit.*;
+
+import domain.ProductCategory;
+
 import static org.junit.Assert.*;
 
 public class ProductCategoryTest {

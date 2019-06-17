@@ -1,6 +1,13 @@
-package domain;
+package test;
 
 import org.junit.*;
+
+import domain.Database;
+import domain.Evaluation;
+import domain.EvaluationGroup;
+import domain.Product;
+import domain.User;
+
 import static org.junit.Assert.*;
 
 public class EvaluationTest {
@@ -13,9 +20,9 @@ public class EvaluationTest {
 	@Before
 	public void setUp()
 	{
-		evalGroup = new EvaluationGroup();
-		product = new Product();
-		reviewer = new User();
+		evalGroup = Database.getEvalGroup(1);
+		product = Database.getProduct(1);
+		reviewer = Database.getUser(1);
 		eval = new Evaluation(evalGroup, product, reviewer);
 	}
 

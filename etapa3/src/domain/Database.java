@@ -64,6 +64,42 @@ public class Database {
 		Database.productsGrades.add(new Evaluation(0, Database.evalGroups.get(1), Database.products.get(5), Database.users.get(5)));
 		
 	}
+	
+	public static Evaluation getProductsGrade(int id) {
+		if (id >= productsGrades.size() || id < 0)
+			return null;
+		else
+			return productsGrades.get(id);
+	}
+
+	public static ProductCategory getCategorie(int id) {
+		if (id >= categories.size() || id < 0)
+			return null;
+		else
+			return categories.get(id);
+	}
+
+	public static User getUser(int id) {
+		if (id >= users.size() || id < 0)
+			return null;
+		else
+			return users.get(id);
+	}
+
+	public static Product getProduct(int id) {
+		if (id >= products.size() || id < 0)
+			return null;
+		else
+			return products.get(id);
+	}
+
+	public static EvaluationGroup getEvalGroup(int id) {
+		if (id >= evalGroups.size() || id < 0)
+			return null;
+		else
+			return evalGroups.get(id);
+	}
+
 
 	public static List<User> getUsers() {
 		return null;
