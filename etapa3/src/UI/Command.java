@@ -1,6 +1,8 @@
 package UI;
 
 public abstract class Command {
+	UI ui;
+	
 	public Command() {
 		
 	}
