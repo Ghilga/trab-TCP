@@ -20,6 +20,15 @@ public class Product {
 		this.group = group;
 	}
 
+	public String getName() {
+		return name;
+	}
+ 
+
+	public EvaluationGroup getGroup() {
+		return group;
+	}
+	
 	public void addEvaluation(Evaluation evaluation) {
 
 	}

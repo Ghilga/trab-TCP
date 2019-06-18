@@ -1,5 +1,10 @@
 package UI;
 
+import java.util.List;
+
+import domain.Product;
+import domain.User;
+
 public abstract class Command {
 	UI ui;
 	
@@ -17,11 +22,11 @@ public abstract class Command {
 		
 	}
 	
-	public void displayProducts() {
+	public void displayProducts(List<Product> products) {
 		
 	}
 	
-	public void displayUsers() {
+	public void displayUsers(List<User> users) {
 		
 	}
 	

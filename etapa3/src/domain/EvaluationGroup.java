@@ -18,6 +18,11 @@ public class EvaluationGroup {
 		this.members = members;
 		this.products = null;
 	}
+	
+	public List<User> getMembers() {
+		return members;
+	}
+	
 	private void addEvaluation(Product product, User reviwer) {
 
 	}
