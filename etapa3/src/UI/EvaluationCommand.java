@@ -5,7 +5,7 @@ import domain.EvaluationGroup;
 import domain.Product;
 import domain.User;
 
-public class EvaluationCommand extends Command{
+public class EvaluationCommand extends UICommand{
 	
 	public void execute() {
 		Product productInEvaluation;

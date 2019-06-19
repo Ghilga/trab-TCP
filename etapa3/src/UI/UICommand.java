@@ -2,13 +2,14 @@ package UI;
 
 import java.util.List;
 
+import domain.EvaluationGroup;
 import domain.Product;
 import domain.User;
 
-public abstract class Command {
+public abstract class UICommand {
 	UI ui;
 	
-	public Command() {
+	public UICommand() {
 		
 	}
 	

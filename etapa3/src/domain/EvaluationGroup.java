@@ -10,13 +10,21 @@ public class EvaluationGroup {
 	private List<User> members;
 	private List<Product> products;
 
-	
+	public EvaluationGroup(String name) {
+		this.name = name;
+		this.evaluations = null;
+		this.products = null;
+	}
 	
 	public EvaluationGroup(String name, List<User> members) {
 		this.name = name;
 		this.evaluations = null;
 		this.members = members;
 		this.products = null;
+	}
+	
+	public void setMembers(List<User> members) {
+		this.members = members;
 	}
 	
 	public List<User> getMembers() {
@@ -43,12 +51,16 @@ public class EvaluationGroup {
 		return null;
 	}
 
-	private List<User> getOrderedCandidateReviews() {
+	public List<User> getOrderedCandidateReviews() {
 		return null;
 	}
 
-	private List<Product> getOrderedProducts() {
+	public List<Product> getOrderedProducts() {
 		return null;
+	}
+	
+	public String getName() {
+		return name;
 	}
 
 	public boolean isAllocated() {
