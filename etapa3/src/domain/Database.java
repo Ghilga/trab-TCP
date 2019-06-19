@@ -141,5 +141,9 @@ public class Database {
 	public EvaluationGroup findEvalGroup(String name) {
 		return null;
 	}
+	
+	public static void saveEvalGroup(EvaluationGroup evalGroup) {
+		
+	}
 
 }

@@ -31,7 +31,7 @@ public class EvaluationGroup {
 		return members;
 	}
 	
-	private void addEvaluation(Product product, User reviwer) {
+	public void addEvaluation(Product product, User reviewer) {
 
 	}
 
@@ -51,7 +51,7 @@ public class EvaluationGroup {
 		return null;
 	}
 
-	public List<User> getOrderedCandidateReviewers() {
+	public List<User> getOrderedCandidateReviewers(Product product) {
 		return null;
 	}
 

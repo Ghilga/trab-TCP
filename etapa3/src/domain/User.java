@@ -23,6 +23,10 @@ public class User {
 		
 	}
 	
+	public int getId() {
+		return id;
+	}
+	
 	public void setEvaluatePermission (boolean evaluatePermission) {
 		this.evaluatePermission = evaluatePermission;
 	}

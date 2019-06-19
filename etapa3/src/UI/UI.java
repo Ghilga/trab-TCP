@@ -16,8 +16,9 @@ public class UI {
 	
 	public static void main(String[] args) {
 		new Database();
-		UICommand teste = new AllocationCommand();
-		teste.execute();
+		AllocationCommand teste = new AllocationCommand();
+		//teste.execute();
+		teste.printGroups();;
 	}
 
 }
