@@ -18,17 +18,24 @@ public class EvaluationCommand extends UICommand{
 				System.out.println("Produto invalido, digite o nome de um produto da lista.");
 		}while (productInEvaluation == null);
 	
-		EvaluationGroup group = productInEvaluation.getGroup();
+		
+		askUser(productInEvaluation);
+	
+	}
+	
+	private void askUser(Product product) {
+		
+		EvaluationGroup group = product.getGroup();
 		User evaluator;
 		
 		do {
 			displayUsers(group.getMembers());
 			String evaluatorName = UI.scanner.nextLine();
 			evaluator = group.findUser(evaluatorName);
-			if (productInEvaluation == null)
+			if (evaluator == null)
 				System.out.println("Produto invalido, digite o nome de um produto da lista.");
-		}while (productInEvaluation == null);
-	
+		}while (evaluator == null);
 	}
 
 }
+
