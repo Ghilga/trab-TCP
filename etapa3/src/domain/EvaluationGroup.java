@@ -51,7 +51,7 @@ public class EvaluationGroup {
 		return null;
 	}
 
-	public List<User> getOrderedCandidateReviews() {
+	public List<User> getOrderedCandidateReviewers() {
 		return null;
 	}
 

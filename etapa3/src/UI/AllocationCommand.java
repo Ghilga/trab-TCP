@@ -29,19 +29,30 @@ public class AllocationCommand extends UICommand {
 	
 	public void execute() {
 		printGroups();
+		int numEvaluators = askNumEvaluators();
 		evalGroup = askGroup();
-		productsToAllocate = evalGroup.getOrderedProducts();
-		candidates = evalGroup.getMembers();
-		//--------------------
+		if (evalGroup.isAllocated()) {
+			System.out.println("Grupo já alocado");
+			return;
+		}
+		else {
+			for (int i=0; i<numEvaluators; i++) {
+				productsToAllocate = evalGroup.getOrderedProducts();
+				candidates = evalGroup.getOrderedCandidateReviewers();
+				//--------------------
+			}
+		}
 	}
 	
 	public EvaluationGroup askGroup() {
-		System.out.println("Escolha o grupo para alocar os produtos");	
+		System.out.println("Escolha o grupo para alocar os produtos: ");	
 		return groupsMenu.get(UI.scanner.nextInt());
 	}
 	
+	
 	public int askNumEvaluators() {
-		return 0;
+		System.out.println("Quantos membros do grupo irão avaliar os produtos? ");
+		return UI.scanner.nextInt();
 	}
 	
 	public List<User> chooseEvaluators(){

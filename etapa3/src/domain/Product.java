@@ -9,7 +9,6 @@ public class Product {
 	private Map<User,Evaluation> evaluations;
 	private ProductCategory category;
 	private EvaluationGroup group;
-
 	
 	public Product(int id, String name, ProductCategory category, EvaluationGroup group) {
 		super();
