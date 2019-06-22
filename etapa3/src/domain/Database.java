@@ -78,35 +78,35 @@ public class Database {
 		
 	}
 	
-	public Evaluation getProductsGrade(int id) {
+	public static Evaluation getProductsGrade(int id) {
 		if (id >= productsGrades.size() || id < 0)
 			return null;
 		else
 			return productsGrades.get(id);
 	}
 
-	public ProductCategory getCategorie(int id) {
+	public static ProductCategory getCategorie(int id) {
 		if (id >= categories.size() || id < 0)
 			return null;
 		else
 			return categories.get(id);
 	}
 
-	public User getUser(int id) {
+	public static User getUser(int id) {
 		if (id >= users.size() || id < 0)
 			return null;
 		else
 			return users.get(id);
 	}
 
-	public Product getProduct(int id) {
+	public static Product getProduct(int id) {
 		if (id >= products.size() || id < 0)
 			return null;
 		else
 			return products.get(id);
 	}
 
-	public EvaluationGroup getEvalGroup(int id) {
+	public static EvaluationGroup getEvalGroup(int id) {
 		if (id >= evalGroups.size() || id < 0)
 			return null;
 		else
@@ -131,11 +131,21 @@ public class Database {
 	}
 
 	public static User findUser(String name) {
-		return null;
+		User u = null;
+		for (User user : users) {
+			if (user.getName().contentEquals(name))
+				u = user;
+		}
+		return u;
 	}
 
 	public static Product findProduct(String name) {
-		return null;
+		Product p = null;
+		for (Product product : products) {
+			if (product.getName().contentEquals(name))
+				p = product;
+		}
+		return p;
 	}
 
 	public static EvaluationGroup findEvalGroup(String name) {
