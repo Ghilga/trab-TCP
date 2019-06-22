@@ -72,8 +72,8 @@ public class EvaluationGroup {
 		return name;
 	}
 	
-	public User getUser(String name) {
-		return members.
+	public List<User> getUser(String name) {
+		return members;
 	}
 
 	public boolean isAllocated() {
