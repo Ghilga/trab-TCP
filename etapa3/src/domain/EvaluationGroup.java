@@ -23,6 +23,15 @@ public class EvaluationGroup {
 		this.products = null;
 	}
 	
+	public User findUser(String name) {
+		User u = null;
+		for (User user : this.members) {
+			if (user.getName().contentEquals(name))
+				u = user;
+		}
+		return u;
+	}
+	
 	public void setMembers(List<User> members) {
 		this.members = members;
 	}

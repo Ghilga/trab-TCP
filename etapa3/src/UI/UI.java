@@ -2,12 +2,15 @@ package UI;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 import domain.Database;
 
 public class UI {
 	
 	private static Map<Integer, UICommand> commands;
+	
+	public static Scanner scanner;
 	
 	public static void main(String[] args) {
 		Database.initialize();

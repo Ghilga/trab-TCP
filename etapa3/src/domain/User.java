@@ -27,6 +27,10 @@ public class User {
 		return id;
 	}
 	
+	public String getName() {
+		return name;
+	}
+	
 	public void setEvaluatePermission (boolean evaluatePermission) {
 		this.evaluatePermission = evaluatePermission;
 	}
