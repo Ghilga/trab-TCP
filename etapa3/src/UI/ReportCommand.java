@@ -9,5 +9,10 @@ public class ReportCommand extends UICommand{
 	public void execute() {
 		
 	}
+	
+	@Override
+	public String toString() {
+		return "Relatório";
+	}
 
 }

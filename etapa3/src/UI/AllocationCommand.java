@@ -1,5 +1,6 @@
 package UI;
 
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,7 +20,7 @@ public class AllocationCommand extends UICommand {
 	private Map<Integer, EvaluationGroup> groupsMenu;
 
 	public AllocationCommand() {
-		populateMap();
+		initializeGroupsMap();
 		
 	}
 
@@ -53,12 +54,11 @@ public class AllocationCommand extends UICommand {
 		showReport(evalGroup);
 	}
 	
-	private void populateMap() {
+	private void initializeGroupsMap() {
 		groupsMenu = new HashMap<>();
 		List<EvaluationGroup> groups = Database.getEvalGroups();
-		int groupsListSize = Database.getEvalGroups().size();
 
-		for (int i = 0; i < groupsListSize; i++) {
+		for (int i = 0; i < groups.size(); i++) {
 			groupsMenu.put(i + 1, groups.get(i));
 		}
 	}
@@ -98,16 +98,11 @@ public class AllocationCommand extends UICommand {
 		}
 	}
 	
-	public void printGroups() {
-		for (int i = 1; i <= groupsMenu.size(); i++)
-			System.out.println(i + " - " + groupsMenu.get(i).getName());
-	}
-
 	public EvaluationGroup askGroup() {
 		EvaluationGroup selectedGroup = null;
 		
 		while(selectedGroup == null) {
-			printGroups();
+			displayEvalGroups(Database.getEvalGroups());
 			
 			System.out.println("Escolha o grupo para alocar os produtos: ");
 			selectedGroup = groupsMenu.get(ApplicationIO.readInteger());
@@ -123,5 +118,10 @@ public class AllocationCommand extends UICommand {
 			numEvaluators = ApplicationIO.readInteger();	
 		}
 		return numEvaluators;
+	}
+	
+	@Override
+	public String toString() {
+		return "Alocação de Produtos";
 	}
 }

@@ -62,6 +62,10 @@ public class EvaluationGroup {
 	public String getName() {
 		return name;
 	}
+	
+	public User getUser(String name) {
+		return members.
+	}
 
 	public boolean isAllocated() {
 		return false;

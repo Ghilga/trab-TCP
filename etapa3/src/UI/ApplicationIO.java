@@ -8,7 +8,18 @@ public class ApplicationIO {
 	public static Scanner scanner = new Scanner(System.in);
 	
 	public static String readString() {
-		return null;
+		String stringInput = null;
+		
+		while(stringInput == null) {
+			try {
+				stringInput = scanner.nextLine();
+			} catch (InputMismatchException ex) {
+				System.out.println("Entrada Invalida! (Deve ser uma palavra)");
+				scanner.next();
+			}
+		}
+		
+		return stringInput;
 	}
 
 	public static int readInteger() {

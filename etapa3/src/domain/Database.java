@@ -130,20 +130,33 @@ public class Database {
 		return productsGrades;
 	}
 
-	public User findUser(String name) {
+	public static User findUser(String name) {
 		return null;
 	}
 
-	public Product findProduct(String name) {
+	public static Product findProduct(String name) {
 		return null;
 	}
 
-	public EvaluationGroup findEvalGroup(String name) {
+	public static EvaluationGroup findEvalGroup(String name) {
 		return null;
 	}
 	
 	public static void saveEvalGroup(EvaluationGroup evalGroup) {
 		
 	}
+	
+	public static void saveUser(User user) {
+		
+	}
+	
+	public static void saveProduct(Product product) {
+			
+	}
+	
+	public static void saveEvaluation(Evaluation evaluation) {
+		
+	}
+	
 
 }
