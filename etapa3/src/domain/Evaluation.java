@@ -14,12 +14,6 @@ public class Evaluation {
 		this.reviewer = reviewer;
 	}
 	
-	public Evaluation(EvaluationGroup group, Product product, User reviewer) {
-		this.score = null;
-		this.group = group;
-		this.product = product;
-		this.reviewer = reviewer;
-	}
 	public boolean isDone() {
 		return score != null;
 	}
@@ -43,5 +37,12 @@ public class Evaluation {
 	public Product getProduct() {
 		return this.product;
 	}
+	
+	@Override
+    public String toString() {
+
+        return product.getName() + "\nNota: " + score + "\nGrupo: " + group.getName() + "\nAvaliador: " + reviewer.getName();
+
+    }
 
 }

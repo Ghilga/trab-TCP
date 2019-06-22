@@ -32,8 +32,8 @@ public class Product {
 		return group;
 	}
 	
-	public void addEvaluation(Evaluation evaluation) {
-
+	public void addEvaluation(User reviewer, Evaluation evaluation) {
+		this.evaluations.put(reviewer,evaluation);
 	}
 
 	public void addScore(User user, int score) {

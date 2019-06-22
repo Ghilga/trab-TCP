@@ -16,7 +16,7 @@ public abstract class UICommand {
 	public abstract void execute();
 	
 	public void displayEvaluations() {
-		
+
 	}
 	
 	public void displayEvalGroups(List<EvaluationGroup> evalGroups) {

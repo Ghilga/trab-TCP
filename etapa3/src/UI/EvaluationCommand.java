@@ -14,18 +14,14 @@ public class EvaluationCommand extends UICommand{
 	}
 	
 	public void execute() {
-		Product productInEvaluation;
-		User evaluator;
-		int score;
 		
-		productInEvaluation = askProduct();
-		evaluator = askEvaluator(productInEvaluation);
-		score = askGrade();
+		Product productInEvaluation = askProduct();
+		User evaluator = askEvaluator(productInEvaluation);
+		int score = askGrade();
 		
 		Evaluation eval = new Evaluation(score, productInEvaluation.getGroup(), productInEvaluation, evaluator);
 		Database.saveEvaluation(eval);
-		
-	
+		System.out.println(eval);
 	}
 	
 	
