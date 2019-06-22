@@ -42,7 +42,6 @@ public class Evaluation {
     public String toString() {
 
         return product.getName() + "\nNota: " + score + "\nGrupo: " + group.getName() + "\nAvaliador: " + reviewer.getName();
-
     }
 
 }

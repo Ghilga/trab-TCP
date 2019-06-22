@@ -1,7 +1,8 @@
 package domain;
 
-import java.util.Map;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class EvaluationGroup {
 
@@ -41,7 +42,12 @@ public class EvaluationGroup {
 	}
 	
 	public void addEvaluation(Product product, User reviewer) {
-
+		List<Evaluation> evaluationList = evaluations.get(product);
+		Evaluation newEvaluation = new Evaluation(product.getGroup(), product, reviewer);
+		if (evaluationList  == null)
+			evaluations.put(product, evaluationList);
+		
+		evaluationList.add(newEvaluation);
 	}
 
 	public void allocate(int numMembers) {
@@ -61,11 +67,22 @@ public class EvaluationGroup {
 	}
 
 	public List<User> getOrderedCandidateReviewers(Product product) {
-		return null;
+		List<User> orderedList = new ArrayList<User>();
+		for (User member : members) {
+			orderedList.add(member.getId(), member);
+		}
+		
+		return orderedList;
 	}
 
 	public List<Product> getOrderedProducts() {
-		return null;
+		List<Product> orderedList = new ArrayList<Product>();
+		if (products != null)
+			for (Product product : products) {
+				orderedList.add(product.getId(), product);
+			}
+		
+		return orderedList;
 	}
 	
 	public String getName() {
