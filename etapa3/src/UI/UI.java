@@ -1,23 +1,31 @@
 package UI;
 
+import java.util.HashMap;
 import java.util.Map;
-import java.util.Scanner;
 
 import domain.Database;
 
 public class UI {
 	
-	private Map<String, UICommand> commands;
-	public static Scanner scanner = new Scanner(System.in);
+	private static Map<Integer, UICommand> commands;
 	
-	public String getCommand() {
+	public static void main(String[] args) {
+		Database.initialize();
+		initializeCommandsMap();
+		
+		//UICommand teste = new AllocationCommand();
+		//teste.execute();
+	}
+	
+	public Integer getCommand() {
 		return null;
 	}
 	
-	public static void main(String[] args) {
-		new Database();
-		UICommand teste = new AllocationCommand();
-		teste.execute();
+	private static void initializeCommandsMap() {
+		commands = new HashMap<>();
+		commands.put(1, new AllocationCommand());
+		commands.put(2, new EvaluationCommand());
+		commands.put(3, new ReportCommand());
 	}
 
 }

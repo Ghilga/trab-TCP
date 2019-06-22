@@ -2,7 +2,6 @@ package UI;
 
 import java.util.List;
 
-import domain.EvaluationGroup;
 import domain.Product;
 import domain.User;
 

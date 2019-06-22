@@ -1,6 +1,6 @@
 package UI;
 
-public class ReportCommand {
+public class ReportCommand extends UICommand{
 	
 	public void printReport() {
 		

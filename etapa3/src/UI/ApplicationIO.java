@@ -1,9 +1,12 @@
 package UI;
 
 import java.util.InputMismatchException;
+import java.util.Scanner;
 
 public class ApplicationIO {
-
+	
+	public static Scanner scanner = new Scanner(System.in);
+	
 	public static String readString() {
 		return null;
 	}
@@ -12,10 +15,10 @@ public class ApplicationIO {
 		Integer integerInput = null;
 		while(integerInput == null) {
 			try {
-				integerInput = UI.scanner.nextInt();
+				integerInput = scanner.nextInt();
 			} catch (InputMismatchException ex) {
 				System.out.println("Entrada Invalida! (Deve ser um numero inteiro)");
-				UI.scanner.next();
+				scanner.next();
 			}
 		}
 		

@@ -17,7 +17,7 @@ public class Database {
 		initialize();
 	}
 	
-	public void initialize() {
+	public static void initialize() {
 		Database.categories = new ArrayList<ProductCategory>();
 		Database.evalGroups = new ArrayList<EvaluationGroup>();
 		Database.users = new ArrayList<User>();
