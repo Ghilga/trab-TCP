@@ -29,7 +29,19 @@ public class Evaluation {
 	}
 	
 	public Integer getScore() {
-		return score;
+		return this.score;
+	}
+	
+	public User getReviewer() {
+		return this.reviewer;
+	}
+	
+	public EvaluationGroup getEvaluationGroup() {
+		return this.group;
+	}
+	
+	public Product getProduct() {
+		return this.product;
 	}
 
 }

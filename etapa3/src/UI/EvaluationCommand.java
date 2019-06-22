@@ -1,8 +1,5 @@
 package UI;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import domain.Database;
 import domain.Evaluation;
@@ -17,14 +14,17 @@ public class EvaluationCommand extends UICommand{
 	}
 	
 	public void execute() {
+		Product productInEvaluation;
+		User evaluator;
+		int score;
 		
-		Product productInEvaluation = askProduct();
-		System.out.println("produto escolhido: " + productInEvaluation.getName());
-		User reviewer = askEvaluator(productInEvaluation);
-		System.out.println("avaliador escolhido escolhido: " + reviewer.getName());
+		productInEvaluation = askProduct();
+		evaluator = askEvaluator(productInEvaluation);
+		score = askGrade();
 		
-		int evaluationScore = askEvaluationScore();
-		Evaluation evaluation = createEvaluation(reviewer,evaluationScore);
+		Evaluation eval = new Evaluation(score, productInEvaluation.getGroup(), productInEvaluation, evaluator);
+		Database.saveEvaluation(eval);
+		
 	
 	}
 	
@@ -64,18 +64,15 @@ public class EvaluationCommand extends UICommand{
 		return evaluator;
 	}
 	
-	private Evaluation createEvaluation(User reviewer, Integer evaluationScore) {
-		
-		return null;
-	}
-	private Integer askEvaluationScore() {
-		int evaluationScore;
+	private int askGrade() {
+		int score;
+		System.out.println("Selecione uma nota para o produto de -3 a 3: ");
 		do {
-			System.out.println("Dê uma nota de -3 a 3:");
-			evaluationScore = ApplicationIO.readInteger();
-		} while (evaluationScore < -3 || evaluationScore > 3);
-		
-		return evaluationScore;
+			score = ApplicationIO.readInteger();
+			if (score < -3 || score > 3)
+				System.out.println("a nota deve estar entre -3 e 3");
+		}while (score < -3 || score > 3);
+		return score;
 	}
 	
 	@Override
