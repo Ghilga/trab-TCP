@@ -24,6 +24,7 @@ public class EvaluationCommand extends UICommand{
 		
 		Evaluation eval = new Evaluation(score, productInEvaluation.getGroup(), productInEvaluation, evaluator);
 		Database.saveEvaluation(eval);
+		System.out.println(eval);
 		
 	
 	}

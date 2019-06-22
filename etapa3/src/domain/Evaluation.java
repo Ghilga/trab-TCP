@@ -43,5 +43,12 @@ public class Evaluation {
 	public Product getProduct() {
 		return this.product;
 	}
+	
+	@Override
+	public String toString() {
+		
+		return product.getName() + "\nNota: " + score + "\nGrupo: " + group.getName() + "\nAvaliador: " + reviewer.getName();
+		
+	}
 
 }
