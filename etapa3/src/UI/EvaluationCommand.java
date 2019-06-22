@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import domain.Database;
+import domain.Evaluation;
 import domain.EvaluationGroup;
 import domain.Product;
 import domain.User;
@@ -30,7 +31,9 @@ public class EvaluationCommand extends UICommand{
 				System.out.println("Produto invalido, digite o indice de um produto da lista.");
 		}while (productInEvaluation == null);
 		
-		askEvaluator(productInEvaluation);
+		User reviewer = askEvaluator(productInEvaluation);
+		int evaluationScore = askEvaluationScore();
+		Evaluation evaluation = createEvaluation(reviewer,evaluationScore);
 	
 	}
 	
@@ -53,7 +56,7 @@ public class EvaluationCommand extends UICommand{
 		
 	}
 	
-	private void askEvaluator(Product product) {
+	private User askEvaluator(Product product) {
 		
 		EvaluationGroup group = product.getGroup();
 		initializeReviewersMap(group.getMembers());
@@ -68,6 +71,22 @@ public class EvaluationCommand extends UICommand{
 			if (evaluator == null)
 				System.out.println("Avaliador invalido, digite o indice de um avaliador da lista.");
 		}while (evaluator == null);
+		
+		return evaluator;
+	}
+	
+	private Evaluation createEvaluation(User reviewer, Integer evaluationScore) {
+		
+		return null;
+	}
+	private Integer askEvaluationScore() {
+		int evaluationScore;
+		do {
+			System.out.println("Dê uma nota de -3 a 3:");
+			evaluationScore = ApplicationIO.readInteger();
+		} while (evaluationScore < -3 || evaluationScore > 3);
+		
+		return evaluationScore;
 	}
 	
 	@Override

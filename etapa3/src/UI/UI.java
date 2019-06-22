@@ -16,6 +16,7 @@ public class UI {
 		printMenu();
 		selectedCommand = getCommand();
 		selectedCommand.execute();
+		ApplicationIO.closeScanner();
 	}
 	
 	private static UICommand getCommand() {

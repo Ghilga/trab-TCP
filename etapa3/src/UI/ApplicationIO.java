@@ -35,5 +35,9 @@ public class ApplicationIO {
 		
 		return integerInput.intValue();
 	}
+	
+	public static void closeScanner() {
+		scanner.close();
+	}
 
 }
