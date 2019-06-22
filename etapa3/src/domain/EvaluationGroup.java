@@ -23,6 +23,15 @@ public class EvaluationGroup {
 		this.products = null;
 	}
 	
+	public User findUser(String name) {
+		User u = null;
+		for (User user : this.members) {
+			if (user.getName().contentEquals(name))
+				u = user;
+		}
+		return u;
+	}
+	
 	public void setMembers(List<User> members) {
 		this.members = members;
 	}
@@ -61,6 +70,10 @@ public class EvaluationGroup {
 	
 	public String getName() {
 		return name;
+	}
+	
+	public User getUser(int index) {
+		return members.get(index);
 	}
 
 	public boolean isAllocated() {

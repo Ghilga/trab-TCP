@@ -15,7 +15,7 @@ public abstract class UICommand {
 	
 	public abstract void execute();
 	
-	public void displayGrades() {
+	public void displayEvaluations() {
 		
 	}
 	
