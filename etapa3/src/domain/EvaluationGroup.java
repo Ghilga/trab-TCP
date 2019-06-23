@@ -57,6 +57,10 @@ public class EvaluationGroup {
 	public boolean evaluateDone() {
 		return false;
 	}
+	
+	public Map<Product, List<Evaluation>> getEvaluations() {
+		return this.evaluations;
+	}
 
 	public List<Product> getAcceptableProducts() {
 		return null;
