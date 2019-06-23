@@ -30,7 +30,7 @@ public class User {
 		return name;
 	}
 	
-	public boolean canEvaluate() {
+	public boolean canEvaluate(Product product) {
 		return true;
 	}
 	

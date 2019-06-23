@@ -50,17 +50,17 @@ public class Database {
 		Database.evalGroups.get(1).setMembers(Arrays.asList(Database.users.get(0), Database.users.get(1), Database.users.get(2), Database.users.get(3), Database.users.get(4), Database.users.get(5), Database.users.get(6)));
 		Database.evalGroups.get(2).setMembers(Arrays.asList(Database.users.get(3), Database.users.get(4), Database.users.get(5), Database.users.get(6), Database.users.get(7), Database.users.get(8), Database.users.get(9)));
 		
-		Database.products.add(new Product(1,"L'oreal DD Cream", Database.categories.get(0), Database.evalGroups.get(2)));
-		Database.products.add(new Product(2,"Avon CC Cream", Database.categories.get(1), Database.evalGroups.get(1)));
-		Database.products.add(new Product(3,"Revolution Powder Sunscreen", Database.categories.get(2), Database.evalGroups.get(1)));
-		Database.products.add(new Product(4,"Maybelline BB Cream", Database.categories.get(3), Database.evalGroups.get(1)));
-		Database.products.add(new Product(5,"Revlon Foundation+SPF20", Database.categories.get(4), Database.evalGroups.get(1)));
-		Database.products.add(new Product(6,"Nivea Matte Face SPF", Database.categories.get(5), Database.evalGroups.get(1)));
-		Database.products.add(new Product(7,"La Roche CC Cream", Database.categories.get(1), Database.evalGroups.get(0)));
-		Database.products.add(new Product(8,"Yves Rocher Powder+SPF15", Database.categories.get(2), Database.evalGroups.get(0)));
-		Database.products.add(new Product(9,"Nivea BB Cream", Database.categories.get(3), Database.evalGroups.get(0)));
-		Database.products.add(new Product(10,"Base O Boticário SPF20", Database.categories.get(4), Database.evalGroups.get(0)));
-		Database.products.add(new Product(11,"Natura SPF20 Rosto Matte", Database.categories.get(5), Database.evalGroups.get(0)));
+		Database.products.add(new Product(1,"L'oreal DD Cream", Database.getUser(0), Database.categories.get(0), Database.evalGroups.get(2)));
+		Database.products.add(new Product(2,"Avon CC Cream", Database.getUser(5), Database.categories.get(1), Database.evalGroups.get(1)));
+		Database.products.add(new Product(3,"Revolution Powder Sunscreen", Database.getUser(6), Database.categories.get(2), Database.evalGroups.get(1)));
+		Database.products.add(new Product(4,"Maybelline BB Cream", Database.getUser(7), Database.categories.get(3), Database.evalGroups.get(1)));
+		Database.products.add(new Product(5,"Revlon Foundation+SPF20", Database.getUser(8), Database.categories.get(4), Database.evalGroups.get(1)));
+		Database.products.add(new Product(6,"Nivea Matte Face SPF", Database.getUser(9), Database.categories.get(5), Database.evalGroups.get(1)));
+		Database.products.add(new Product(7,"La Roche CC Cream", Database.getUser(5), Database.categories.get(1), Database.evalGroups.get(0)));
+		Database.products.add(new Product(8,"Yves Rocher Powder+SPF15", Database.getUser(6), Database.categories.get(2), Database.evalGroups.get(0)));
+		Database.products.add(new Product(9,"Nivea BB Cream", Database.getUser(7), Database.categories.get(3), Database.evalGroups.get(0)));
+		Database.products.add(new Product(10,"Base O Boticário SPF20", Database.getUser(8), Database.categories.get(4), Database.evalGroups.get(0)));
+		Database.products.add(new Product(11,"Natura SPF20 Rosto Matte", Database.getUser(9), Database.categories.get(5), Database.evalGroups.get(0)));
 		
 		Database.productsGrades.add(new Evaluation(2, Database.evalGroups.get(2), Database.products.get(0), Database.users.get(7)));
 		Database.productsGrades.add(new Evaluation(Database.evalGroups.get(2), Database.products.get(0), Database.users.get(9)));
@@ -105,10 +105,11 @@ public class Database {
 	}
 
 	public static User getUser(int id) {
-		if (id >= users.size() || id < 0)
-			return null;
-		else
-			return users.get(id);
+		User user = null;
+		for (User u : users)
+			if (id == u.getId())
+				user = u;
+		return user;	
 	}
 
 	public static Product getProduct(int id) {

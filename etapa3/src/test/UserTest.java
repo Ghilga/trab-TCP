@@ -38,4 +38,11 @@ public class UserTest {
 		assertTrue(testUser.hasEvaluation(eval));
 	}
 	
+	@Test
+	public void canEvaluate2() {
+		Product product = Database.getProduct(2);
+		User user = Database.getUser(1);
+		assertTrue(user.canEvaluate(product));
+	}
+	
 }
