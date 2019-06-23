@@ -44,6 +44,12 @@ public class Product {
 
 	public Double getScoreAvg() {
 		Double score = (double) 0;
+		int counter = 0;
+		for (Map.Entry<User, Evaluation> entry : evaluations.entrySet()) {
+			score += entry.getValue().getScore();
+			counter++;
+		}
+		score /= counter;
 		return score;
 	}
 	

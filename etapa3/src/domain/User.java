@@ -43,14 +43,23 @@ public class User {
 			evaluations.get(evalGroup).add(evaluation);
 		}
 		else {
-			evaluations.put(evalGroup,Arrays.asList(evaluation));
+			ArrayList<Evaluation> list = new ArrayList<Evaluation>();
+			list.add(evaluation);
+			evaluations.put(evalGroup, list);
 		}
 		
 		Database.saveEvaluation(evaluation);
 	}
 	
 	public boolean hasEvaluation(Evaluation evaluation) {
+		for (Map.Entry<EvaluationGroup, List<Evaluation>> entry : evaluations.entrySet()) {
+		    for(Evaluation eval : entry.getValue())
+		    	if (eval.equals(evaluation))
+		    		return true;
+		    	
+		}
 		return false;
+
 	}
 
 }

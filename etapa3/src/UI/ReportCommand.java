@@ -44,7 +44,16 @@ public class ReportCommand extends UICommand{
 	
 	public List<Product> sortCrescent(List<Product> list){
 		Comparator<Product> compareByScore = (Product p1, Product p2) -> p1.getScoreAvg().compareTo( p2.getScoreAvg() );
-		Collections.sort(list, compareByScore);
+		//Collections.sort(list, compareByScore);
+		list.sort(compareByScore);
+		
+		return list;
+	}
+	
+	public List<Product> sortDecrescent(List<Product> list){
+		Comparator<Product> compareByScore = (Product p1, Product p2) -> p1.getScoreAvg().compareTo( p2.getScoreAvg() );
+		//Collections.sort(list, compareByScore);
+		list.sort(compareByScore.reversed());
 		
 		return list;
 	}

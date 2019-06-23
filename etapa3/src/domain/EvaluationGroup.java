@@ -58,11 +58,23 @@ public class EvaluationGroup {
 	}
 
 	public List<Product> getAcceptableProducts() {
-		return null;
+		List<Product> list = new ArrayList<Product>();
+		for (Map.Entry<Product, List<Evaluation>> entry : evaluations.entrySet()) {
+			Product p = entry.getKey();
+			if (p.getScoreAvg() >= 0)
+				list.add(p);
+		}
+		return list;
 	}
 
 	public List<Product> getNotAcceptableProducts() {
-		return null;
+		List<Product> list = new ArrayList<Product>();
+		for (Map.Entry<Product, List<Evaluation>> entry : evaluations.entrySet()) {
+			Product p = entry.getKey();
+			if (p.getScoreAvg() < 0)
+				list.add(p);
+		}
+		return list;
 	}
 
 	public List<User> getOrderedCandidateReviewers(Product product) {
@@ -103,7 +115,10 @@ public class EvaluationGroup {
 	}
 
 	public boolean isAllocated() {
-		return false;
+		if (this.evaluations == null)
+			return false;
+		else
+			return true;
 	}
 
 }
