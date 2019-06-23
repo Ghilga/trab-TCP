@@ -19,6 +19,7 @@ public class Evaluation {
 		this.group = group;
 		this.product = product;
 		this.reviewer = reviewer;
+		
 	}
 	
 	public boolean isDone() {

@@ -1,6 +1,8 @@
 package domain;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -9,17 +11,17 @@ public class EvaluationGroup {
 	private String name;
 	private Map<Product,List<Evaluation>> evaluations;
 	private List<User> members;
-	public List<Product> products;
+	private List<Product> products;
 
 	public EvaluationGroup(String name) {
 		this.name = name;
-		this.evaluations = null;
+		this.evaluations = new HashMap<>();
 		this.products = null;
 	}
 	
 	public EvaluationGroup(String name, List<User> members) {
 		this.name = name;
-		this.evaluations = null;
+		this.evaluations = new HashMap<>();
 		this.members = members;
 		this.products = null;
 	}
@@ -37,12 +39,17 @@ public class EvaluationGroup {
 	}
 	
 	public void addEvaluation(Product product, User reviewer) {
-		List<Evaluation> evaluationList = evaluations.get(product);
-		Evaluation newEvaluation = new Evaluation(null, product.getGroup(), product, reviewer);
-		if (evaluationList  == null)
-			evaluations.put(product, evaluationList);
-		
-		evaluationList.add(newEvaluation);
+		Evaluation newEvaluation = new Evaluation(product.getGroup(), product, reviewer);
+		if (evaluations.containsKey(product)){
+			List<Evaluation> productEvals = new ArrayList<Evaluation>(evaluations.get(product));
+			productEvals.add(newEvaluation);
+			evaluations.replace(product, productEvals);
+		}
+		else {
+			evaluations.put(product, Arrays.asList(newEvaluation));
+		}
+		product.addEvaluation(newEvaluation);
+		reviewer.addEvaluation(newEvaluation);
 	}
 
 	public void allocate(int numMembers) {

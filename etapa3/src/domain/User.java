@@ -32,8 +32,21 @@ public class User {
 		return name;
 	}
 	
+	public String getState() {
+		return state;
+	}
+	
 	public boolean canEvaluate(Product product) {
-		return true;
+		User requester = product.getRequester();
+		String requesterState = requester.getState();
+		ProductCategory productCategory = product.getProductCategory();
+		
+		boolean isInvalidEvaluator = requester.equals(this) || requesterState.equals(state) 
+				|| !categories.contains(productCategory) || product.getEvaluators().contains(this);
+		if(isInvalidEvaluator)
+			return false;
+		else
+			return true;
 	}
 	
 	public void addEvaluation(Evaluation evaluation) {
