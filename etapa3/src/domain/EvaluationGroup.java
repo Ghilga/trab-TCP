@@ -9,7 +9,7 @@ public class EvaluationGroup {
 	private String name;
 	private Map<Product,List<Evaluation>> evaluations;
 	private List<User> members;
-	private List<Product> products;
+	public List<Product> products;
 
 	public EvaluationGroup(String name) {
 		this.name = name;
@@ -24,13 +24,8 @@ public class EvaluationGroup {
 		this.products = null;
 	}
 	
-	public User findUser(String name) {
-		User u = null;
-		for (User user : this.members) {
-			if (user.getName().contentEquals(name))
-				u = user;
-		}
-		return u;
+	public void setProducts(List<Product> products){
+		this.products = products;
 	}
 	
 	public void setMembers(List<User> members) {
@@ -73,17 +68,18 @@ public class EvaluationGroup {
 	public List<User> getOrderedCandidateReviewers(Product product) {
 		List<User> orderedList = new ArrayList<User>();
 		for (User member : members) {
-			orderedList.add(member.getId(), member);
+			if(member.canEvaluate(product))
+				orderedList.add(member);
 		}
 		
 		return orderedList;
 	}
 
 	public List<Product> getOrderedProducts() {
-		List<Product> orderedList = new ArrayList<Product>();
+		List<Product> orderedList = new ArrayList<>();
 		if (products != null)
 			for (Product product : products) {
-				orderedList.add(product.getId(), product);
+				orderedList.add(product);
 			}
 		
 		return orderedList;
@@ -95,6 +91,15 @@ public class EvaluationGroup {
 	
 	public User getUser(int index) {
 		return members.get(index);
+	}
+	
+	public User findUser(String name) {
+		User u = null;
+		for (User user : this.members) {
+			if (user.getName().contentEquals(name))
+				u = user;
+		}
+		return u;
 	}
 
 	public boolean isAllocated() {

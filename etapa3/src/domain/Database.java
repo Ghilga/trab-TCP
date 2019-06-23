@@ -87,6 +87,10 @@ public class Database {
 		Database.products.get(4).addEvaluation(evaluations.get(9));
 		Database.products.get(5).addEvaluation(evaluations.get(10));
 		Database.products.get(5).addEvaluation(evaluations.get(11));
+		
+		Database.evalGroups.get(0).setProducts(Arrays.asList(products.get(6), products.get(7), products.get(8), products.get(9), products.get(10)));
+		Database.evalGroups.get(1).setProducts(Arrays.asList(products.get(1), products.get(2), products.get(3), products.get(4), products.get(5)));
+		Database.evalGroups.get(2).setProducts(Arrays.asList(products.get(0)));
 
 	}
 	
@@ -167,6 +171,16 @@ public class Database {
 		}
 		return p;
 	}
+	
+	public static Evaluation findEvaluation(int productId, int userId) {
+		Evaluation e = null;
+		for (Evaluation eval : evaluations) {
+			if (eval.getProduct().getId() == productId && eval.getReviewer().getId() == userId)
+				e = eval;
+		}
+		return e;
+	}
+
 
 	public static EvaluationGroup findEvalGroup(String name) {
 		return null;
@@ -185,7 +199,12 @@ public class Database {
 	}
 	
 	public static void saveEvaluation(Evaluation evaluation) {
-		Database.evaluations.add(evaluation);
+		if(evaluations.contains(evaluation)) {
+			int index = evaluations.indexOf(evaluation);
+			evaluations.set(index, evaluation);
+		}
+		else
+			evaluations.add(evaluation);
 	}
 	
 

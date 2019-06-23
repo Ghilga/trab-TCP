@@ -66,9 +66,16 @@ public class Product {
 		return true;
 	}
 
-	public boolean evaluationDone() {
-		return false;
+	public boolean evaluationDone(User evaluator) {
+		if(evaluations.get(evaluator).isDone())
+			return true;
+		else
+			return false;
 	}
-
+	
+	@Override
+	public String toString() {
+		return "\nId: " + id + "\nNome: " + name + "\n";
+	}
 
 }

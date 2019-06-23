@@ -47,7 +47,7 @@ public abstract class UICommand {
 		while(selectedGroup == null) {
 			displayEvalGroups(Database.getEvalGroups());
 			int initialIndex = 1;
-			System.out.println("Escolha o grupo para alocar os produtos: ");
+			System.out.println("Escolha um grupo: ");
 			selectedGroup = Database.getEvalGroup((ApplicationIO.readInteger())-initialIndex);
 		}
 		return selectedGroup;

@@ -1,5 +1,7 @@
 package domain;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -35,8 +37,16 @@ public class User {
 	}
 	
 	public void addEvaluation(Evaluation evaluation) {
+		EvaluationGroup evalGroup = evaluation.getEvaluationGroup();
 		
-		//evaluations.put(evaluation.getEvaluationGroup(), evaluation);
+		if(evaluations.containsKey(evalGroup)){
+			evaluations.get(evalGroup).add(evaluation);
+		}
+		else {
+			evaluations.put(evalGroup,Arrays.asList(evaluation));
+		}
+		
+		Database.saveEvaluation(evaluation);
 	}
 	
 	public boolean hasEvaluation(Evaluation evaluation) {

@@ -48,7 +48,7 @@ public class Evaluation {
 	@Override
     public String toString() {
 
-        return product.getName() + "\nNota: " + score + "\nGrupo: " + group.getName() + "\nAvaliador: " + reviewer.getName();
+        return product.getName() + "\nNota: " + score + "\nGrupo: " + group.getName() + "\nAvaliador: " + reviewer.getName() + "\n";
     }
 
 }

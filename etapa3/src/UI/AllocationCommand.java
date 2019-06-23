@@ -31,7 +31,7 @@ public class AllocationCommand extends UICommand {
 				productsToAllocate = evalGroup.getOrderedProducts();
 				try {
 					while (!productsToAllocate.isEmpty()) {
-						Product selectedProduct = productsToAllocate.get(i);
+						Product selectedProduct = productsToAllocate.get(0);
 						candidates = evalGroup.getOrderedCandidateReviewers(selectedProduct);
 						
 						if(!candidates.isEmpty()) {
@@ -66,13 +66,13 @@ public class AllocationCommand extends UICommand {
 			for (Product product : products) {
 				for (User evaluator : product.getEvaluators()){
 					System.out.println(logIndex++ + ". Produto id " + product.getId() + 
-										"alocado ao avaliador id " + evaluator.getId());
+										" alocado ao avaliador id " + evaluator.getId());
 				}
 			}
 		} catch (NullPointerException ex) {
 			System.out.println(ex.getCause());
 		}
-		System.out.println(logIndex + ". Fim da Locação.");
+		System.out.println(logIndex + ". Fim da Locação.\n");
 	}
 	
 	public void printProducts(List<Product> products) {

@@ -26,12 +26,18 @@ public class EvaluationCommand extends UICommand{
 		} while(!productInEvaluation.hasEvaluators());
 		
 		User evaluator = askEvaluator(productInEvaluation);
-		int score = askGrade();
-		productInEvaluation.addScore(evaluator, score);
-		
-		Evaluation eval = new Evaluation(score, productInEvaluation.getGroup(), productInEvaluation, evaluator);
-		Database.saveEvaluation(eval);
-		System.out.println(eval);
+		if (productInEvaluation.evaluationDone(evaluator)) {
+			System.out.println("Produto ja foi avaliado pelo avaliador escolhido!");
+		}
+		else {
+			
+			int score = askGrade();
+			productInEvaluation.addScore(evaluator, score);
+			
+			Evaluation eval = new Evaluation(score, productInEvaluation.getGroup(), productInEvaluation, evaluator);
+			Database.saveEvaluation(eval);
+			System.out.println(Database.findEvaluation(productInEvaluation.getId(), evaluator.getId()));
+		}
 	}
 	
 	

@@ -22,7 +22,7 @@ public class ReportCommand extends UICommand{
 		List<Product> notAcceptableProducts = new ArrayList<Product>();
 		
 		if (!group.isAllocated())
-			System.out.println("grupo de avaliacao nao alocado");
+			System.out.println("Grupo de avaliacao nao alocado");
 		else{
 			for (Map.Entry<Product , List<Evaluation>> entry : group.getEvaluations().entrySet()) {
 				System.out.println("oi");
