@@ -18,7 +18,7 @@ public class Product {
 		super();
 		this.id = id;
 		this.name = name;
-		this.evaluations = new HashMap<>();
+		this.evaluations = new HashMap<User, Evaluation>();
 		this.requester = requester;
 		this.category = category;
 		this.group = group;
@@ -28,6 +28,7 @@ public class Product {
 	public String getName() {
 		return name;
 	}
+	
  
 
 	public EvaluationGroup getGroup() {
@@ -42,8 +43,9 @@ public class Product {
 
 	}
 
-	public double getScoreAvg() {
-		return 0;
+	public Double getScoreAvg() {
+		Double score = (double) 0;
+		return score;
 	}
 	
 	public List<User> getEvaluators(){
@@ -55,11 +57,12 @@ public class Product {
 	}
 	
 	public boolean isAcceptable() {
-		return false;
+		return true;
 	}
 
 	public boolean evaluationDone() {
 		return false;
 	}
+
 
 }

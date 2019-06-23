@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Database {
 
-	private static List<Evaluation> productsGrades;
+	private static List<Evaluation> evaluations;
 	private static List<User> users;
 	private static List<Product> products;
 	private static List<EvaluationGroup> evalGroups;
@@ -22,7 +22,7 @@ public class Database {
 		Database.evalGroups = new ArrayList<EvaluationGroup>();
 		Database.users = new ArrayList<User>();
 		Database.products = new ArrayList<Product>();
-		Database.productsGrades = new ArrayList<Evaluation>();
+		Database.evaluations = new ArrayList<Evaluation>();
 		
 		Database.categories.add(new ProductCategory("DD Cream")); 			//0
 		Database.categories.add(new ProductCategory("CC Cream")); 			//1
@@ -62,39 +62,39 @@ public class Database {
 		Database.products.add(new Product(10,"Base O Boticário SPF20", Database.getUser(8), Database.categories.get(4), Database.evalGroups.get(0)));
 		Database.products.add(new Product(11,"Natura SPF20 Rosto Matte", Database.getUser(9), Database.categories.get(5), Database.evalGroups.get(0)));
 		
-		Database.productsGrades.add(new Evaluation(2, Database.evalGroups.get(2), Database.products.get(0), Database.users.get(7)));
-		Database.productsGrades.add(new Evaluation(Database.evalGroups.get(2), Database.products.get(0), Database.users.get(9)));
-		Database.productsGrades.add(new Evaluation(2, Database.evalGroups.get(1), Database.products.get(1), Database.users.get(6)));
-		Database.productsGrades.add(new Evaluation(3, Database.evalGroups.get(1), Database.products.get(1), Database.users.get(1)));
-		Database.productsGrades.add(new Evaluation(-1, Database.evalGroups.get(1), Database.products.get(2), Database.users.get(3)));
-		Database.productsGrades.add(new Evaluation(1, Database.evalGroups.get(1), Database.products.get(2), Database.users.get(5)));
-		Database.productsGrades.add(new Evaluation(1, Database.evalGroups.get(1), Database.products.get(3), Database.users.get(0)));
-		Database.productsGrades.add(new Evaluation(0, Database.evalGroups.get(1), Database.products.get(3), Database.users.get(2)));
-		Database.productsGrades.add(new Evaluation(-3, Database.evalGroups.get(1), Database.products.get(4), Database.users.get(3)));
-		Database.productsGrades.add(new Evaluation(-3, Database.evalGroups.get(1), Database.products.get(4), Database.users.get(4)));
-		Database.productsGrades.add(new Evaluation(-1, Database.evalGroups.get(1), Database.products.get(5), Database.users.get(2)));
-		Database.productsGrades.add(new Evaluation(0, Database.evalGroups.get(1), Database.products.get(5), Database.users.get(5)));
+		Database.evaluations.add(new Evaluation(2, Database.evalGroups.get(2), Database.products.get(0), Database.users.get(7)));
+		Database.evaluations.add(new Evaluation(Database.evalGroups.get(2), Database.products.get(0), Database.users.get(9)));
+		Database.evaluations.add(new Evaluation(2, Database.evalGroups.get(1), Database.products.get(1), Database.users.get(6)));
+		Database.evaluations.add(new Evaluation(3, Database.evalGroups.get(1), Database.products.get(1), Database.users.get(1)));
+		Database.evaluations.add(new Evaluation(-1, Database.evalGroups.get(1), Database.products.get(2), Database.users.get(3)));
+		Database.evaluations.add(new Evaluation(1, Database.evalGroups.get(1), Database.products.get(2), Database.users.get(5)));
+		Database.evaluations.add(new Evaluation(1, Database.evalGroups.get(1), Database.products.get(3), Database.users.get(0)));
+		Database.evaluations.add(new Evaluation(0, Database.evalGroups.get(1), Database.products.get(3), Database.users.get(2)));
+		Database.evaluations.add(new Evaluation(-3, Database.evalGroups.get(1), Database.products.get(4), Database.users.get(3)));
+		Database.evaluations.add(new Evaluation(-3, Database.evalGroups.get(1), Database.products.get(4), Database.users.get(4)));
+		Database.evaluations.add(new Evaluation(-1, Database.evalGroups.get(1), Database.products.get(5), Database.users.get(2)));
+		Database.evaluations.add(new Evaluation(0, Database.evalGroups.get(1), Database.products.get(5), Database.users.get(5)));
 		
-		Database.products.get(0).addEvaluation(users.get(7), productsGrades.get(0));
-		Database.products.get(0).addEvaluation(users.get(9), productsGrades.get(1));
-		Database.products.get(1).addEvaluation(users.get(6), productsGrades.get(2));
-		Database.products.get(1).addEvaluation(users.get(1), productsGrades.get(3));
-		Database.products.get(2).addEvaluation(users.get(3), productsGrades.get(4));
-		Database.products.get(2).addEvaluation(users.get(5), productsGrades.get(5));
-		Database.products.get(3).addEvaluation(users.get(0), productsGrades.get(6));
-		Database.products.get(3).addEvaluation(users.get(2), productsGrades.get(7));
-		Database.products.get(4).addEvaluation(users.get(3), productsGrades.get(8));
-		Database.products.get(4).addEvaluation(users.get(4), productsGrades.get(9));
-		Database.products.get(5).addEvaluation(users.get(2), productsGrades.get(10));
-		Database.products.get(5).addEvaluation(users.get(5), productsGrades.get(11));
+		Database.products.get(0).addEvaluation(users.get(7), evaluations.get(0));
+		Database.products.get(0).addEvaluation(users.get(9), evaluations.get(1));
+		Database.products.get(1).addEvaluation(users.get(6), evaluations.get(2));
+		Database.products.get(1).addEvaluation(users.get(1), evaluations.get(3));
+		Database.products.get(2).addEvaluation(users.get(3), evaluations.get(4));
+		Database.products.get(2).addEvaluation(users.get(5), evaluations.get(5));
+		Database.products.get(3).addEvaluation(users.get(0), evaluations.get(6));
+		Database.products.get(3).addEvaluation(users.get(2), evaluations.get(7));
+		Database.products.get(4).addEvaluation(users.get(3), evaluations.get(8));
+		Database.products.get(4).addEvaluation(users.get(4), evaluations.get(9));
+		Database.products.get(5).addEvaluation(users.get(2), evaluations.get(10));
+		Database.products.get(5).addEvaluation(users.get(5), evaluations.get(11));
 		
 	}
 	
 	public static Evaluation getProductsGrade(int id) {
-		if (id >= productsGrades.size() || id < 0)
+		if (id >= evaluations.size() || id < 0)
 			return null;
 		else
-			return productsGrades.get(id);
+			return evaluations.get(id);
 	}
 
 	public static ProductCategory getCategorie(int id) {
@@ -125,6 +125,13 @@ public class Database {
 		else
 			return evalGroups.get(id);
 	}
+	
+	public static Evaluation getEvaluation(int id){
+		if (id >= evaluations.size() || id < 0)
+			return null;
+		else
+			return evaluations.get(id);
+	}
 
 
 	public static List<User> getUsers() {
@@ -139,8 +146,8 @@ public class Database {
 		return evalGroups;
 	}
 	
-	public static List<Evaluation> getProductsGrades(){
-		return productsGrades;
+	public static List<Evaluation> getEvaluations(){
+		return evaluations;
 	}
 
 	public static User findUser(String name) {
@@ -178,7 +185,7 @@ public class Database {
 	}
 	
 	public static void saveEvaluation(Evaluation evaluation) {
-		Database.productsGrades.add(evaluation);
+		Database.evaluations.add(evaluation);
 	}
 	
 

@@ -84,17 +84,6 @@ public class AllocationCommand extends UICommand {
 		}
 	}
 	
-	public EvaluationGroup askGroup() {
-		EvaluationGroup selectedGroup = null;
-		
-		while(selectedGroup == null) {
-			displayEvalGroups(Database.getEvalGroups());
-			
-			System.out.println("Escolha o grupo para alocar os produtos: ");
-			selectedGroup = Database.getEvalGroup((ApplicationIO.readInteger()));
-		}
-		return selectedGroup;
-	}
 
 	public int askNumEvaluators() {
 		int numEvaluators = 0;

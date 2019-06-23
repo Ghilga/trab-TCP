@@ -20,6 +20,7 @@ public class EvaluationTest {
 	@Before
 	public void setUp()
 	{
+		Database.initialize();
 		evalGroup = Database.getEvalGroup(1);
 		product = Database.getProduct(1);
 		reviewer = Database.getUser(1);

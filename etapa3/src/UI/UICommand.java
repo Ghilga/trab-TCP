@@ -2,6 +2,7 @@ package UI;
 
 import java.util.List;
 
+import domain.Database;
 import domain.Evaluation;
 import domain.EvaluationGroup;
 import domain.Product;
@@ -38,6 +39,18 @@ public abstract class UICommand {
 	public void displayEvaluations(List<Evaluation> evaluations) {
 		for (int i = 0; i < evaluations.size(); i++)
 			System.out.println(i+1 + " - " + evaluations.get(i));
+	}
+	
+	public EvaluationGroup askGroup() {
+		EvaluationGroup selectedGroup = null;
+		
+		while(selectedGroup == null) {
+			displayEvalGroups(Database.getEvalGroups());
+			int initialIndex = 1;
+			System.out.println("Escolha o grupo para alocar os produtos: ");
+			selectedGroup = Database.getEvalGroup((ApplicationIO.readInteger())-initialIndex);
+		}
+		return selectedGroup;
 	}
 	
 

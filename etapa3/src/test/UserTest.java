@@ -19,6 +19,7 @@ public class UserTest {
 	
 	@Before
 	public void setUp() throws Exception {
+		Database.initialize();
 		int id = 0;
 		String name = null;
 		String state = null;
