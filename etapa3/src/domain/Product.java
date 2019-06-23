@@ -1,8 +1,7 @@
 package domain;
 
-import java.sql.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -18,9 +17,10 @@ public class Product {
 		super();
 		this.id = id;
 		this.name = name;
-		this.evaluations = null;
+		this.evaluations = new HashMap<>();
 		this.category = category;
 		this.group = group;
+		
 	}
 
 	public String getName() {

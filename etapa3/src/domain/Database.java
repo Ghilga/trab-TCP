@@ -63,6 +63,7 @@ public class Database {
 		Database.products.add(new Product(11,"Natura SPF20 Rosto Matte", Database.categories.get(5), Database.evalGroups.get(0)));
 		
 		Database.productsGrades.add(new Evaluation(2, Database.evalGroups.get(2), Database.products.get(0), Database.users.get(7)));
+		Database.productsGrades.add(new Evaluation(Database.evalGroups.get(2), Database.products.get(0), Database.users.get(9)));
 		Database.productsGrades.add(new Evaluation(2, Database.evalGroups.get(1), Database.products.get(1), Database.users.get(6)));
 		Database.productsGrades.add(new Evaluation(3, Database.evalGroups.get(1), Database.products.get(1), Database.users.get(1)));
 		Database.productsGrades.add(new Evaluation(-1, Database.evalGroups.get(1), Database.products.get(2), Database.users.get(3)));
@@ -75,17 +76,17 @@ public class Database {
 		Database.productsGrades.add(new Evaluation(0, Database.evalGroups.get(1), Database.products.get(5), Database.users.get(5)));
 		
 		Database.products.get(0).addEvaluation(users.get(7), productsGrades.get(0));
-		Database.products.get(0).addEvaluation(users.get(9), null);
-		Database.products.get(1).addEvaluation(users.get(6), productsGrades.get(1));
-		Database.products.get(1).addEvaluation(users.get(1), productsGrades.get(2));
-		Database.products.get(2).addEvaluation(users.get(3), productsGrades.get(3));
-		Database.products.get(2).addEvaluation(users.get(5), productsGrades.get(4));
-		Database.products.get(3).addEvaluation(users.get(0), productsGrades.get(5));
-		Database.products.get(3).addEvaluation(users.get(2), productsGrades.get(6));
-		Database.products.get(4).addEvaluation(users.get(3), productsGrades.get(7));
-		Database.products.get(4).addEvaluation(users.get(4), productsGrades.get(8));
-		Database.products.get(5).addEvaluation(users.get(2), productsGrades.get(9));
-		Database.products.get(5).addEvaluation(users.get(5), productsGrades.get(10));
+		Database.products.get(0).addEvaluation(users.get(9), productsGrades.get(1));
+		Database.products.get(1).addEvaluation(users.get(6), productsGrades.get(2));
+		Database.products.get(1).addEvaluation(users.get(1), productsGrades.get(3));
+		Database.products.get(2).addEvaluation(users.get(3), productsGrades.get(4));
+		Database.products.get(2).addEvaluation(users.get(5), productsGrades.get(5));
+		Database.products.get(3).addEvaluation(users.get(0), productsGrades.get(6));
+		Database.products.get(3).addEvaluation(users.get(2), productsGrades.get(7));
+		Database.products.get(4).addEvaluation(users.get(3), productsGrades.get(8));
+		Database.products.get(4).addEvaluation(users.get(4), productsGrades.get(9));
+		Database.products.get(5).addEvaluation(users.get(2), productsGrades.get(10));
+		Database.products.get(5).addEvaluation(users.get(5), productsGrades.get(11));
 		
 	}
 	
@@ -176,7 +177,7 @@ public class Database {
 	}
 	
 	public static void saveEvaluation(Evaluation evaluation) {
-		
+		Database.productsGrades.add(evaluation);
 	}
 	
 

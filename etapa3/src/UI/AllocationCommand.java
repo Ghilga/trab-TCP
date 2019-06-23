@@ -1,9 +1,6 @@
 package UI;
 
-
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import domain.Database;
 import domain.EvaluationGroup;
@@ -17,11 +14,9 @@ public class AllocationCommand extends UICommand {
 	private List<User> candidates;
 	private List<Product> productsToAllocate;
 	private EvaluationGroup evalGroup;
-	private Map<Integer, EvaluationGroup> groupsMenu;
 
 	public AllocationCommand() {
-		initializeGroupsMap();
-		
+
 	}
 
 	public void execute() {
@@ -52,15 +47,6 @@ public class AllocationCommand extends UICommand {
 		}
 		
 		showReport(evalGroup);
-	}
-	
-	private void initializeGroupsMap() {
-		groupsMenu = new HashMap<>();
-		List<EvaluationGroup> groups = Database.getEvalGroups();
-
-		for (int i = 0; i < groups.size(); i++) {
-			groupsMenu.put(i + 1, groups.get(i));
-		}
 	}
 	
 	public void showReport(EvaluationGroup evalGroup) {
@@ -105,7 +91,7 @@ public class AllocationCommand extends UICommand {
 			displayEvalGroups(Database.getEvalGroups());
 			
 			System.out.println("Escolha o grupo para alocar os produtos: ");
-			selectedGroup = groupsMenu.get(ApplicationIO.readInteger());
+			selectedGroup = Database.getEvalGroup((ApplicationIO.readInteger()));
 		}
 		return selectedGroup;
 	}
@@ -114,7 +100,7 @@ public class AllocationCommand extends UICommand {
 		int numEvaluators = 0;
 		
 		while(numEvaluators < MIN_EVALUATORS || numEvaluators > MAX_EVALUATORS) {
-			System.out.println("Quantos membros  do grupo irão avaliar os produtos? (de 2 a 5)");
+			System.out.println("Quantos membros do grupo irão avaliar os produtos? (de 2 a 5)");
 			numEvaluators = ApplicationIO.readInteger();	
 		}
 		return numEvaluators;
