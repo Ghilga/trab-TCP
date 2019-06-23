@@ -35,7 +35,8 @@ public class User {
 	}
 	
 	public void addEvaluation(Evaluation evaluation) {
-
+		
+		//evaluations.put(evaluation.getEvaluationGroup(), evaluation);
 	}
 	
 	public boolean hasEvaluation(Evaluation evaluation) {

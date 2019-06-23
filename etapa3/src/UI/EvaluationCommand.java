@@ -1,9 +1,10 @@
 package UI;
 
 
+import java.util.List;
+
 import domain.Database;
 import domain.Evaluation;
-import domain.EvaluationGroup;
 import domain.Product;
 import domain.User;
 
@@ -15,9 +16,18 @@ public class EvaluationCommand extends UICommand{
 	
 	public void execute() {
 		
-		Product productInEvaluation = askProduct();
+		Product productInEvaluation;
+		displayProducts(Database.getProducts());
+		do {
+			productInEvaluation = askProduct();
+			if (!productInEvaluation.hasEvaluators())
+				System.out.println("O produto selecionado ainda não foi alocado a nenhum avaliador!");
+			
+		} while(!productInEvaluation.hasEvaluators());
+		
 		User evaluator = askEvaluator(productInEvaluation);
 		int score = askGrade();
+		productInEvaluation.addScore(evaluator, score);
 		
 		Evaluation eval = new Evaluation(score, productInEvaluation.getGroup(), productInEvaluation, evaluator);
 		Database.saveEvaluation(eval);
@@ -28,7 +38,6 @@ public class EvaluationCommand extends UICommand{
 	private Product askProduct() {
 		Product product;
 		int initialIndex = 1;
-		displayProducts(Database.getProducts());
 		System.out.println("Escolha um produto da lista acima: ");
 		do {
 			
@@ -43,21 +52,21 @@ public class EvaluationCommand extends UICommand{
 	
 	private User askEvaluator(Product product) {
 		
-		EvaluationGroup group = product.getGroup();
-		int initialIndex = 1;
-		displayUsers(group.getMembers());
+		List<User> evaluators = product.getEvaluators();
+		displayUsers(evaluators);
 		
-		User evaluator;
+		int initialIndex = 1;
+		int evaluatorIndex;
 		
 		do {
+			evaluatorIndex = ApplicationIO.readInteger();
 			
-			int evaluatorIndex = ApplicationIO.readInteger() - initialIndex;
-			evaluator = group.getUser(evaluatorIndex);
-			if (evaluator == null)
+			if (evaluatorIndex < initialIndex || evaluatorIndex > evaluators.size())
 				System.out.println("Avaliador invalido, digite o indice de um avaliador da lista.");
-		}while (evaluator == null);
-		
-		return evaluator;
+			
+		}while (evaluatorIndex < initialIndex || evaluatorIndex > evaluators.size());
+
+		return evaluators.get(evaluatorIndex - initialIndex);
 	}
 	
 	private int askGrade() {

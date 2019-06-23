@@ -33,17 +33,21 @@ public class AllocationCommand extends UICommand {
 					while (!productsToAllocate.isEmpty()) {
 						Product selectedProduct = productsToAllocate.get(i);
 						candidates = evalGroup.getOrderedCandidateReviewers(selectedProduct);
-						User reviewer = candidates.get(0);
-						evalGroup.addEvaluation(selectedProduct, reviewer);
-						productsToAllocate.remove(selectedProduct);
 						
-						Database.saveEvalGroup(evalGroup);
-						showReport(evalGroup);
+						if(!candidates.isEmpty()) {
+							User reviewer = candidates.get(0);
+							evalGroup.addEvaluation(selectedProduct, reviewer);
+							productsToAllocate.remove(selectedProduct);
+						}
+						else {
+							break;
+						}
 					}
 				} catch (NullPointerException ex) {
 					System.out.println(ex.getCause());
 				}
 			}
+			Database.saveEvalGroup(evalGroup);
 		}
 		
 		showReport(evalGroup);

@@ -44,6 +44,9 @@ public class EvaluationGroup {
 	public void addEvaluation(Product product, User reviewer) {
 		List<Evaluation> evaluationList = evaluations.get(product);
 		Evaluation newEvaluation = new Evaluation(null, product.getGroup(), product, reviewer);
+		
+		product.addEvaluation(newEvaluation);
+		reviewer.addEvaluation(newEvaluation);
 		if (evaluationList  == null)
 			evaluations.put(product, evaluationList);
 		

@@ -1,6 +1,5 @@
 package test;
 
-import org.junit.*;
 import static org.junit.Assert.*;
 import java.util.List;
 import org.junit.Before;
@@ -19,6 +18,7 @@ public class UserTest {
 	
 	@Before
 	public void setUp() throws Exception {
+		Database.initialize();
 		int id = 0;
 		String name = null;
 		String state = null;
