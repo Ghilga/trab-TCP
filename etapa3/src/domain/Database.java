@@ -75,18 +75,18 @@ public class Database {
 		Database.evaluations.add(new Evaluation(-1, Database.evalGroups.get(1), Database.products.get(5), Database.users.get(2)));
 		Database.evaluations.add(new Evaluation(0, Database.evalGroups.get(1), Database.products.get(5), Database.users.get(5)));
 		
-		Database.products.get(0).addEvaluation(productsGrades.get(0));
-		Database.products.get(0).addEvaluation(productsGrades.get(1));
-		Database.products.get(1).addEvaluation(productsGrades.get(2));
-		Database.products.get(1).addEvaluation(productsGrades.get(3));
-		Database.products.get(2).addEvaluation(productsGrades.get(4));
-		Database.products.get(2).addEvaluation(productsGrades.get(5));
-		Database.products.get(3).addEvaluation(productsGrades.get(6));
-		Database.products.get(3).addEvaluation(productsGrades.get(7));
-		Database.products.get(4).addEvaluation(productsGrades.get(8));
-		Database.products.get(4).addEvaluation(productsGrades.get(9));
-		Database.products.get(5).addEvaluation(productsGrades.get(10));
-		Database.products.get(5).addEvaluation(productsGrades.get(11));
+		Database.products.get(0).addEvaluation(evaluations.get(0));
+		Database.products.get(0).addEvaluation(evaluations.get(1));
+		Database.products.get(1).addEvaluation(evaluations.get(2));
+		Database.products.get(1).addEvaluation(evaluations.get(3));
+		Database.products.get(2).addEvaluation(evaluations.get(4));
+		Database.products.get(2).addEvaluation(evaluations.get(5));
+		Database.products.get(3).addEvaluation(evaluations.get(6));
+		Database.products.get(3).addEvaluation(evaluations.get(7));
+		Database.products.get(4).addEvaluation(evaluations.get(8));
+		Database.products.get(4).addEvaluation(evaluations.get(9));
+		Database.products.get(5).addEvaluation(evaluations.get(10));
+		Database.products.get(5).addEvaluation(evaluations.get(11));
 
 	}
 	

@@ -6,7 +6,6 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
-import domain.Database;
 import domain.Evaluation;
 import domain.EvaluationGroup;
 import domain.Product;
@@ -18,10 +17,10 @@ public class ReportCommand extends UICommand{
 	}
 	
 	public void execute() {
-		displayEvalGroups(Database.getEvalGroups());
 		EvaluationGroup group = askGroup();
 		List<Product> acceptableProducts = new ArrayList<Product>();
 		List<Product> notAcceptableProducts = new ArrayList<Product>();
+		
 		if (!group.isAllocated())
 			System.out.println("grupo de avaliacao nao alocado");
 		else{
