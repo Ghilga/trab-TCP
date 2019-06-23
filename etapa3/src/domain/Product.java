@@ -13,11 +13,13 @@ public class Product {
 	private Map<User,Evaluation> evaluations;
 	private ProductCategory category;
 	private EvaluationGroup group;
+	private User requester;
 	
-	public Product(int id, String name, ProductCategory category, EvaluationGroup group) {
+	public Product(int id, String name, User requester, ProductCategory category, EvaluationGroup group) {
 		super();
 		this.id = id;
 		this.name = name;
+		this.requester = requester;
 		this.evaluations = null;
 		this.category = category;
 		this.group = group;
