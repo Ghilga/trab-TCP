@@ -14,6 +14,13 @@ public class Evaluation {
 		this.reviewer = reviewer;
 	}
 	
+	public Evaluation(EvaluationGroup group, Product product, User reviewer) {
+		this.score = null;
+		this.group = group;
+		this.product = product;
+		this.reviewer = reviewer;
+	}
+	
 	public boolean isDone() {
 		return score != null;
 	}
