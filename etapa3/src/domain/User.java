@@ -35,8 +35,8 @@ public class User {
 		this.evaluatePermission = evaluatePermission;
 	}
 	
-	public boolean canEvaluate() {
-		return evaluatePermission;
+	public boolean canEvaluate(Product product) {
+		return true;
 	}
 	
 	public void addEvaluation(Evaluation evaluation) {
