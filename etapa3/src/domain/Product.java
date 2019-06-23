@@ -34,12 +34,21 @@ public class Product {
 		return group;
 	}
 	
+	public User getRequester() {
+		return requester;
+	}
+	
+	public ProductCategory getProductCategory() {
+		return category;
+	}
+	
 	public void addEvaluation(Evaluation evaluation) {
 		this.evaluations.put(evaluation.getReviewer(),evaluation);
 	}
 
 	public void addScore(User user, int score) {
-		//define a nota no map evaluations e salva o novo evaluation na database
+		evaluations.get(user).setScore(score);
+		//define a nota no map evaluations e salva 
 	}
 
 	public Double getScoreAvg() {
@@ -75,7 +84,7 @@ public class Product {
 	
 	@Override
 	public String toString() {
-		return "\nId: " + id + "\nNome: " + name + "\n";
+		return "\nId: " + id + "\nNome: " + name + "\nSolicitante: " + requester + "\n";
 	}
 
 }

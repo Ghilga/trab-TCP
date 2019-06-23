@@ -29,23 +29,24 @@ public class AllocationCommand extends UICommand {
 		} else {
 			for (int i = 0; i < numEvaluators; i++) {
 				productsToAllocate = evalGroup.getOrderedProducts();
-				try {
+				//try {
 					while (!productsToAllocate.isEmpty()) {
+						
 						Product selectedProduct = productsToAllocate.get(0);
 						candidates = evalGroup.getOrderedCandidateReviewers(selectedProduct);
 						
 						if(!candidates.isEmpty()) {
-							User reviewer = candidates.get(0);
+							User reviewer = candidates.get(i);
 							evalGroup.addEvaluation(selectedProduct, reviewer);
-							productsToAllocate.remove(selectedProduct);
+							
 						}
-						else {
-							break;
-						}
+						productsToAllocate.remove(selectedProduct);
 					}
-				} catch (NullPointerException ex) {
-					System.out.println(ex.getCause());
-				}
+				//} catch (NullPointerException ex) {
+				//	System.out.println(ex.getCause());
+				//} catch (IndexOutOfBoundsException ex) {
+				//	System.out.println("Nao ha avaliadores suficientes para o numero informado");
+				//}
 			}
 			Database.saveEvalGroup(evalGroup);
 		}
