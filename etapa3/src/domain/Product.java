@@ -28,19 +28,18 @@ public class Product {
 	public String getName() {
 		return name;
 	}
-	
  
 
 	public EvaluationGroup getGroup() {
 		return group;
 	}
 	
-	public void addEvaluation(User reviewer, Evaluation evaluation) {
-		this.evaluations.put(reviewer,evaluation);
+	public void addEvaluation(Evaluation evaluation) {
+		this.evaluations.put(evaluation.getReviewer(),evaluation);
 	}
 
 	public void addScore(User user, int score) {
-
+		//define a nota no map evaluations e salva o novo evaluation na database
 	}
 
 	public Double getScoreAvg() {
@@ -54,6 +53,13 @@ public class Product {
 
 	public int getId() {
 		return id;
+	}
+	
+	public boolean hasEvaluators() {
+		if(getEvaluators().isEmpty())
+			return false;
+		else
+			return true;
 	}
 	
 	public boolean isAcceptable() {

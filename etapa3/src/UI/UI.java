@@ -2,7 +2,6 @@ package UI;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Scanner;
 
 import domain.Database;
 
@@ -11,14 +10,14 @@ public class UI {
 	private static Map<Integer, UICommand> commands;
 	private static UICommand selectedCommand;
 	
-	public static Scanner scanner;
-	
 	public static void main(String[] args) {
 		Database.initialize();
 		initializeCommandsMap();
-		printMenu();
-		selectedCommand = getCommand();
-		selectedCommand.execute();
+		while(!(selectedCommand instanceof ExitCommand)) {
+			printMenu();
+			selectedCommand = getCommand();
+			selectedCommand.execute();
+		}
 		ApplicationIO.closeScanner();
 	}
 	
@@ -41,6 +40,7 @@ public class UI {
 		commands.put(1, new AllocationCommand());
 		commands.put(2, new EvaluationCommand());
 		commands.put(3, new ReportCommand());
+		commands.put(4, new ExitCommand());
 	}
 	
 	private static void printMenu(){

@@ -1,7 +1,6 @@
 package domain;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -58,10 +57,6 @@ public class EvaluationGroup {
 	public boolean evaluateDone() {
 		return false;
 	}
-	
-	public Map<Product,List<Evaluation>> getEvaluations() {
-		return this.evaluations;
-	}
 
 	public List<Product> getAcceptableProducts() {
 		return null;
@@ -99,10 +94,7 @@ public class EvaluationGroup {
 	}
 
 	public boolean isAllocated() {
-		return true;
+		return false;
 	}
-	
-	
-	
 
 }

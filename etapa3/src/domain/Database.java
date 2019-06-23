@@ -75,19 +75,19 @@ public class Database {
 		Database.evaluations.add(new Evaluation(-1, Database.evalGroups.get(1), Database.products.get(5), Database.users.get(2)));
 		Database.evaluations.add(new Evaluation(0, Database.evalGroups.get(1), Database.products.get(5), Database.users.get(5)));
 		
-		Database.products.get(0).addEvaluation(users.get(7), evaluations.get(0));
-		Database.products.get(0).addEvaluation(users.get(9), evaluations.get(1));
-		Database.products.get(1).addEvaluation(users.get(6), evaluations.get(2));
-		Database.products.get(1).addEvaluation(users.get(1), evaluations.get(3));
-		Database.products.get(2).addEvaluation(users.get(3), evaluations.get(4));
-		Database.products.get(2).addEvaluation(users.get(5), evaluations.get(5));
-		Database.products.get(3).addEvaluation(users.get(0), evaluations.get(6));
-		Database.products.get(3).addEvaluation(users.get(2), evaluations.get(7));
-		Database.products.get(4).addEvaluation(users.get(3), evaluations.get(8));
-		Database.products.get(4).addEvaluation(users.get(4), evaluations.get(9));
-		Database.products.get(5).addEvaluation(users.get(2), evaluations.get(10));
-		Database.products.get(5).addEvaluation(users.get(5), evaluations.get(11));
-		
+		Database.products.get(0).addEvaluation(productsGrades.get(0));
+		Database.products.get(0).addEvaluation(productsGrades.get(1));
+		Database.products.get(1).addEvaluation(productsGrades.get(2));
+		Database.products.get(1).addEvaluation(productsGrades.get(3));
+		Database.products.get(2).addEvaluation(productsGrades.get(4));
+		Database.products.get(2).addEvaluation(productsGrades.get(5));
+		Database.products.get(3).addEvaluation(productsGrades.get(6));
+		Database.products.get(3).addEvaluation(productsGrades.get(7));
+		Database.products.get(4).addEvaluation(productsGrades.get(8));
+		Database.products.get(4).addEvaluation(productsGrades.get(9));
+		Database.products.get(5).addEvaluation(productsGrades.get(10));
+		Database.products.get(5).addEvaluation(productsGrades.get(11));
+
 	}
 	
 	public static Evaluation getProductsGrade(int id) {
