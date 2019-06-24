@@ -64,14 +64,15 @@ public class EvaluationGroup {
 					
 					Product selectedProduct = productsToAllocate.get(0);
 					candidates = getOrderedCandidateReviewers(selectedProduct);
-					if(!candidates.isEmpty() && i < candidates.size()) {
-						User reviewer = candidates.get(0);
-						addEvaluation(selectedProduct, reviewer);
-						
+					int j = 1;
+					for (User c : candidates){
+						if (j < numEvaluators)
+							addEvaluation(selectedProduct, c);
+						j++;
 					}
 					productsToAllocate.remove(selectedProduct);
 				}
-
+				
 		}
 		Database.saveEvalGroup(this);
 	}
@@ -136,14 +137,6 @@ public class EvaluationGroup {
 		return members.get(index);
 	}
 	
-	public User findUser(String name) {
-		User u = null;
-		for (User user : this.members) {
-			if (user.getName().contentEquals(name))
-				u = user;
-		}
-		return u;
-	}
 
 	public boolean isAllocated() {
 		if (evaluations.isEmpty())

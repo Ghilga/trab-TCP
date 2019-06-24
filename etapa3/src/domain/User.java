@@ -38,11 +38,10 @@ public class User {
 	
 	public boolean canEvaluate(Product product) {
 		User requester = product.getRequester();
-		String requesterState = requester.getState();
 		ProductCategory productCategory = product.getProductCategory();
 		
-		boolean isInvalidEvaluator = requester.equals(this) || requesterState.equals(state) 
-				|| !categories.contains(productCategory) || product.getEvaluators().contains(this);
+		boolean isInvalidEvaluator = requester.equals(this) || requester.getState().equals(this.state) 
+				|| !this.categories.contains(productCategory) || product.getEvaluators().contains(this);
 		if(isInvalidEvaluator)
 			return false;
 		else
@@ -73,6 +72,12 @@ public class User {
 		}
 		return false;
 
+	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return this.name;
 	}
 
 }
