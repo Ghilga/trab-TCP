@@ -1,9 +1,0 @@
-Classes de Equivalencia de User
-	canEvaluate:
-		Validas:
-			true
-		Invalidas:
-			null
-			false
-			
-	
