@@ -24,7 +24,7 @@ public class User {
 		
 	}
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 	
@@ -42,7 +42,7 @@ public class User {
 		ProductCategory productCategory = product.getProductCategory();
 		
 		boolean isInvalidEvaluator = requester.equals(this) || requesterState.equals(state) 
-				|| !categories.contains(productCategory) || product.getEvaluators().contains(this);
+				|| !(categories.contains(productCategory)) || product.getEvaluators().contains(this);
 		if(isInvalidEvaluator)
 			return false;
 		else
@@ -62,6 +62,7 @@ public class User {
 		}
 		
 		Database.saveEvaluation(evaluation);
+		Database.saveUser(this);
 	}
 	
 	public boolean hasEvaluation(Evaluation evaluation) {

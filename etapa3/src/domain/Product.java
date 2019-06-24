@@ -44,6 +44,7 @@ public class Product {
 	
 	public void addEvaluation(Evaluation evaluation) {
 		this.evaluations.put(evaluation.getReviewer(),evaluation);
+		Database.saveProduct(this);
 	}
 
 	public void addScore(User user, int score) {

@@ -51,6 +51,18 @@ public class EvaluationGroup {
 		}
 		product.addEvaluation(newEvaluation);
 		reviewer.addEvaluation(newEvaluation);
+		saveUser(reviewer);
+		saveProduct(product);
+	}
+	
+	private void saveUser(User user) {
+		int index = members.indexOf(user);
+		members.set(index, user);
+	}
+	
+	private void saveProduct(Product product) {
+		int index = products.indexOf(product);
+		products.set(index, product);
 	}
 
 	public void allocate(int numEvaluators) {
@@ -64,16 +76,18 @@ public class EvaluationGroup {
 					
 					Product selectedProduct = productsToAllocate.get(0);
 					candidates = getOrderedCandidateReviewers(selectedProduct);
-					if(!candidates.isEmpty() && i < candidates.size()) {
-						User reviewer = candidates.get(0);
-						addEvaluation(selectedProduct, reviewer);
-						
-					}
+					int j = 1;
+                    for (User c : candidates){
+                        if (j < numEvaluators)
+                            addEvaluation(selectedProduct, c);
+                        j++;
+                    }
 					productsToAllocate.remove(selectedProduct);
 				}
 
 		}
 		Database.saveEvalGroup(this);
+		
 	}
 
 	public boolean evaluateDone() {
@@ -102,13 +116,11 @@ public class EvaluationGroup {
 		return list;
 	}
 
-	public List<User> getOrderedCandidateReviewers(Product product) {
-		List<User> orderedList = new ArrayList<User>();
-		for (User member : members) {
-			if(member.canEvaluate(product))
-				orderedList.add(member);
-		}
-		return orderedList;
+	public List<User> sortUserById(List<User> users){
+		Comparator<User> compareById = (User u1, User u2) -> u1.getId().compareTo( u2.getId() );
+		users.sort(compareById);
+		
+		return users;
 	}
 	
 	public List<Product> sortProductsById(List<Product> products){
@@ -126,6 +138,15 @@ public class EvaluationGroup {
 			}
 		
 		return sortProductsById(orderedList);
+	}
+	
+	public List<User> getOrderedCandidateReviewers(Product product) {
+		List<User> orderedList = new ArrayList<User>();
+		for (User member : members) {
+			if(member.canEvaluate(product))
+				orderedList.add(member);
+		}
+		return sortUserById(orderedList);
 	}
 	
 	public String getName() {

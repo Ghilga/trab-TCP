@@ -191,11 +191,14 @@ public class Database {
 	}
 	
 	public static void saveUser(User user) {
-		
+		int index = users.indexOf(user);
+		users.set(index, user);
+	
 	}
 	
 	public static void saveProduct(Product product) {
-			
+		int index = products.indexOf(product);
+		products.set(index, product);
 	}
 	
 	public static void saveEvaluation(Evaluation evaluation) {

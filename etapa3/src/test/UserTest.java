@@ -53,4 +53,13 @@ public class UserTest {
 		assertTrue(user.hasEvaluation(eval));
 	}
 	
+	@Test
+	public void getOrderedReviewers() {
+		EvaluationGroup evalGroup = Database.getEvalGroup(0);
+		Product product = Database.getProduct(6);
+		List<User> users = evalGroup.getOrderedCandidateReviewers(product);
+		for (User u : users)
+			System.out.println(u.getName());
+	}
+	
 }
