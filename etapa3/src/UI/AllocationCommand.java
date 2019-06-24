@@ -11,8 +11,6 @@ public class AllocationCommand extends UICommand {
 
 	public static final int MIN_EVALUATORS = 2;
 	public static final int MAX_EVALUATORS = 5;
-	private List<User> candidates;
-	private List<Product> productsToAllocate;
 	private EvaluationGroup evalGroup;
 
 	public AllocationCommand() {
@@ -27,28 +25,8 @@ public class AllocationCommand extends UICommand {
 			System.out.println("Grupo já alocado");
 			return;
 		} else {
-			for (int i = 0; i < numEvaluators; i++) {
-				productsToAllocate = evalGroup.getOrderedProducts();
-				//try {
-					while (!productsToAllocate.isEmpty()) {
-						
-						Product selectedProduct = productsToAllocate.get(0);
-						candidates = evalGroup.getOrderedCandidateReviewers(selectedProduct);
-						
-						if(!candidates.isEmpty() && i < candidates.size()) {
-							User reviewer = candidates.get(i);
-							evalGroup.addEvaluation(selectedProduct, reviewer);
-							
-						}
-						productsToAllocate.remove(selectedProduct);
-					}
-				//} catch (NullPointerException ex) {
-				//	System.out.println(ex.getCause());
-				//} catch (IndexOutOfBoundsException ex) {
-				//	System.out.println("Nao ha avaliadores suficientes para o numero informado");
-				//}
-			}
-			Database.saveEvalGroup(evalGroup);
+			evalGroup.allocate(numEvaluators);
+
 		}
 		
 		showReport(evalGroup);

@@ -66,7 +66,7 @@ public class Product {
 		return new ArrayList<User>(evaluations.keySet());
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 	
