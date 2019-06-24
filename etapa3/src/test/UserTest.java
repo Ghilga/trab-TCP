@@ -39,14 +39,21 @@ public class UserTest {
 	}
 	
 	@Test
-	public void canEvaluate2() {
+	public void canEvaluateTestTrue() {
 		Product product = Database.getProduct(2);
 		User user = Database.getUser(1);
-		assertTrue(user.canEvaluate(product));
+		assertFalse(user.canEvaluate(product));
 	}
 	
 	@Test
-	public void hasEvaluationTest() {
+	public void canEvaluateTestFalse() {
+		Product product = Database.getProduct(2);
+		User user = Database.getUser(2);
+		assertFalse(user.canEvaluate(product));
+	}
+	
+	@Test
+	public void hasEvaluationTestTrue() {
 		Evaluation eval = Database.getEvaluation(2);
 		User user = Database.getUser(5);
 		user.addEvaluation(eval);
@@ -60,6 +67,13 @@ public class UserTest {
 		List<User> users = evalGroup.getOrderedCandidateReviewers(product);
 		for (User u : users)
 			System.out.println(u.getName());
+	}
+
+	@Test
+	public void hasEvaluationTestFalse() {
+		Evaluation eval = Database.getEvaluation(2);
+		User user = Database.getUser(5);
+		assertFalse(user.hasEvaluation(eval));
 	}
 	
 }

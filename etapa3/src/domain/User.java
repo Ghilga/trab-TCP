@@ -43,6 +43,7 @@ public class User {
 		
 		boolean isInvalidEvaluator = requester.equals(this) || requesterState.equals(state) 
 				|| !(categories.contains(productCategory)) || product.getEvaluators().contains(this);
+		
 		if(isInvalidEvaluator)
 			return false;
 		else
@@ -74,6 +75,12 @@ public class User {
 		}
 		return false;
 
+	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return this.name;
 	}
 
 }
