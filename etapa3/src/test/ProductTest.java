@@ -19,12 +19,11 @@ public class ProductTest {
 		productTest = Database.getProduct(3);
 	}
 	
-	/*@Test
+	@Test
 	public void addEvalTest() {
 		Evaluation expected = Database.getEvaluation(4);
-		User user = Database.getUser(6);
-		this.productTest.addEvaluation(user, expected);
+		this.productTest.addEvaluation(expected);
 		
-	}*/
+	}
 	
 }
