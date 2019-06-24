@@ -2,6 +2,7 @@ package domain;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -52,8 +53,33 @@ public class EvaluationGroup {
 		reviewer.addEvaluation(newEvaluation);
 	}
 
-	public void allocate(int numMembers) {
-
+	public void allocate(int numEvaluators) {
+		
+		List<User> candidates;
+		List<Product> productsToAllocate;
+		
+		for (int i = 0; i < numEvaluators; i++) {
+			productsToAllocate = getOrderedProducts();
+			System.out.println(productsToAllocate);
+			//try {
+				while (!productsToAllocate.isEmpty()) {
+					
+					Product selectedProduct = productsToAllocate.get(0);
+					candidates = getOrderedCandidateReviewers(selectedProduct);
+					if(!candidates.isEmpty() && i < candidates.size()) {
+						User reviewer = candidates.get(0);
+						addEvaluation(selectedProduct, reviewer);
+						
+					}
+					productsToAllocate.remove(selectedProduct);
+				}
+			//} catch (NullPointerException ex) {
+			//	System.out.println(ex.getCause());
+			//} catch (IndexOutOfBoundsException ex) {
+			//	System.out.println("Nao ha avaliadores suficientes para o numero informado");
+			//}
+		}
+		Database.saveEvalGroup(this);
 	}
 
 	public boolean evaluateDone() {
@@ -90,8 +116,14 @@ public class EvaluationGroup {
 			if(member.canEvaluate(product))
 				orderedList.add(member);
 		}
-		
 		return orderedList;
+	}
+	
+	public List<Product> sortProductsById(List<Product> products){
+		Comparator<Product> compareById = (Product p1, Product p2) -> p1.getId().compareTo( p2.getId() );
+		products.sort(compareById);
+		
+		return products;
 	}
 
 	public List<Product> getOrderedProducts() {
@@ -101,7 +133,7 @@ public class EvaluationGroup {
 				orderedList.add(product);
 			}
 		
-		return orderedList;
+		return sortProductsById(orderedList);
 	}
 	
 	public String getName() {
@@ -122,10 +154,16 @@ public class EvaluationGroup {
 	}
 
 	public boolean isAllocated() {
-		if (this.evaluations == null)
+		if (evaluations.isEmpty())
 			return false;
-		else
+		else {
+			for (Product product : products) {
+				if (evaluations.containsKey(product))
+					return false;
+			}
+			
 			return true;
+		}
 	}
 
 }
