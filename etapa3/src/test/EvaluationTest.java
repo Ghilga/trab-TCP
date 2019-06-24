@@ -32,12 +32,17 @@ public class EvaluationTest {
 	 * diferente de zero?
 	 */
 	@Test
-	public void testIsDone()
+	public void testIsDoneTrue()
+	{
+		eval.setScore(3);
+		assertTrue(eval.isDone());
+	}
+	
+	@Test
+	public void testIsDoneFalse()
 	{
 		assertFalse(eval.isDone());
 		
-		eval.setScore(3);
-		assertTrue(eval.isDone());
 	}
 	
 	@Test
