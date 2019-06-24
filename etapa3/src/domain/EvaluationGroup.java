@@ -66,8 +66,7 @@ public class EvaluationGroup {
 
 	public List<Product> getAcceptableProducts() {
 		List<Product> list = new ArrayList<Product>();
-		for (Map.Entry<Product, List<Evaluation>> entry : evaluations.entrySet()) {
-			Product p = entry.getKey();
+		for (Product p : evaluations.keySet()) {
 			if (p.getScoreAvg() >= 0)
 				list.add(p);
 		}
@@ -76,8 +75,7 @@ public class EvaluationGroup {
 
 	public List<Product> getNotAcceptableProducts() {
 		List<Product> list = new ArrayList<Product>();
-		for (Map.Entry<Product, List<Evaluation>> entry : evaluations.entrySet()) {
-			Product p = entry.getKey();
+		for (Product p : evaluations.keySet()) {
 			if (p.getScoreAvg() < 0)
 				list.add(p);
 		}
@@ -122,10 +120,16 @@ public class EvaluationGroup {
 	}
 
 	public boolean isAllocated() {
-		if (this.evaluations == null)
-			return false;
-		else
-			return true;
+		if (evaluations.isEmpty())
+            return false;
+        else {
+            for (Product product : products) {
+                if (!evaluations.containsKey(product))
+                    return false;
+            }
+
+            return true;
+        }
 	}
 
 }

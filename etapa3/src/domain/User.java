@@ -1,7 +1,7 @@
 package domain;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -19,7 +19,7 @@ public class User {
 		this.name = name;
 		this.state = state;
 		this.categories = categoryList;
-		this.evaluations = null;
+		this.evaluations = new HashMap<EvaluationGroup,List<Evaluation>>();
 		this.evalGroups = groups;
 		
 	}

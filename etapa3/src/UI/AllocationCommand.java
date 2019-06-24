@@ -35,7 +35,7 @@ public class AllocationCommand extends UICommand {
 						Product selectedProduct = productsToAllocate.get(0);
 						candidates = evalGroup.getOrderedCandidateReviewers(selectedProduct);
 						
-						if(!candidates.isEmpty()) {
+						if(!candidates.isEmpty() && i < candidates.size()) {
 							User reviewer = candidates.get(i);
 							evalGroup.addEvaluation(selectedProduct, reviewer);
 							

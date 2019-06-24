@@ -24,10 +24,7 @@ public class ReportCommand extends UICommand{
 		if (!group.isAllocated())
 			System.out.println("Grupo de avaliacao nao alocado");
 		else{
-			for (Map.Entry<Product , List<Evaluation>> entry : group.getEvaluations().entrySet()) {
-				System.out.println("oi");
-				Product p = entry.getKey();
-				System.out.println("x" + p);
+			for (Product p : group.getEvaluations().keySet()) {
 				if (p.isAcceptable())
 					acceptableProducts.add(p);
 				else
