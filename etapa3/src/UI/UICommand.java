@@ -9,7 +9,6 @@ import domain.Product;
 import domain.User;
 
 public abstract class UICommand {
-	UI ui;
 	
 	public UICommand() {
 		

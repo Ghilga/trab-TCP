@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import domain.Database;
-import domain.Evaluation;
 
 public class UI {
 	
